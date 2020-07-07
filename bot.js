@@ -1,4 +1,3 @@
-//node /Users/Joshua/Documents/GitHub/SecretHitlerBot/bot.js
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
@@ -53,17 +52,17 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
 
 if(command === "help") {
-    const exampleEmbed = {
-        color: DD0000,
-        title: 'Some title',
-        description: 'Some description here',
+    const helpEmbed = {
+        color: 0xdd0000,
+        title: 'Secret Hitler Bot Help Prompt',
+        description: 'Prefix: sh!',
         thumbnail: {
             url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
         },
         fields: [
             {
-                name: 'Regular field title',
-                value: 'Some value here',
+                name: 'Command Name: Command',
+                value: 'Description of Command',
             },
             {
                 name: '\u200b',
@@ -79,7 +78,28 @@ if(command === "help") {
         },
     };
     
-    message.channel.send({ embed: exampleEmbed });
+    message.channel.send({ embed: helpEmbed });
+    
+  }
+
+  if(command === "invite") {
+    const helpEmbed = {
+        color: 0xdd0000,
+        title: 'Secret Hitler Bot Invite Link',
+        url: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
+        description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
+        thumbnail: {
+            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+        },
+        
+        timestamp: new Date(),
+        footer: {
+            text: 'Secret Hitler Bot By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+        },
+    };
+    
+    message.channel.send({ embed: helpEmbed });
     
   }
 
