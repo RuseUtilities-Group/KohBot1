@@ -7,4 +7,4 @@ client = commands.Bot(command_prefix= "sh!")
 async def on_ready():
     print("Bot has been activated...")
 
-client.run("NzMwMDA0MTAzNzE5Mjg4OTA0.XwRLrw.foAr71OAADWoqveKYo5yi89KaTQ")
+client.run("NzMwMDA0MTAzNzE5Mjg4OTA0.XwRPMA.frIWsNOKAoVgzOM7NbfZDCcOypA")
