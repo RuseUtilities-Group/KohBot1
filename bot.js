@@ -13,8 +13,8 @@ client.on('shardError', error => {
 client.login(config.token);
 
 client.on("ready", () => {
-  console.log(`Secret Hitler Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  client.user.setActivity(`Playing sh!help`);
+  console.log(`RuseChat Bot V2 has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+  client.user.setActivity(`Playing r!help`);
 
 });
 
@@ -53,15 +53,15 @@ client.on("message", async message => {
 
 if(command === "help") {
     const helpEmbed = {
-        color: 0xdd0000,
-        title: 'Secret Hitler Bot Help Prompt',
-        description: 'Prefix: sh!',
+        color: 0x175342,
+        title: 'RuseChat Bot V2 Help Prompt',
+        description: 'Prefix: r!',
         thumbnail: {
-            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
         fields: [
             {
-                name: 'Help: sh!help',
+                name: 'Help: r!help',
                 value: 'Displays this prompt showing a list of commands and how to use them.',
             },
             {
@@ -70,7 +70,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Invite: sh!invite',
+                name: 'Invite: r!invite',
                 value: 'Displays a prompt showing the invite link for this bot.',
             },
             {
@@ -79,7 +79,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Say: sh!say [message]',
+                name: 'Say: r!say [message]',
                 value: 'Displays the message on this bot, said by the user.',
             },
             {
@@ -88,7 +88,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Ping: sh!ping',
+                name: 'Ping: r!ping',
                 value: 'Displays the true ping and API latency ping of the bot to the user.',
             },
             {
@@ -97,15 +97,15 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Purge: sh!purge [number]',
-                value: 'Conquers andd deletes the amount of messages sent prior for mass clean.',
+                name: 'Purge: r!purge [number]',
+                value: 'Deletes the specified amount of messages sent prior for mass clean.',
             },
             {
                 name: '\u200b',
                 value: '\u200b',
                 inline: false,
             },{
-                name: 'Kick: sh!kick [@user] [reason]',
+                name: 'Kick: r!kick [@user] [reason]',
                 value: 'Kicks specified user. Both Bot and User should have kick and/or moderator roles to do so.',
             },
             {
@@ -113,7 +113,7 @@ if(command === "help") {
                 value: '\u200b',
                 inline: false,
             },{
-                name: 'Ban: sh!ban [@user] [reason]',
+                name: 'Ban: r!ban [@user] [reason]',
                 value: 'Bans specified user. Both Bot and User should have Ban and/or Administrator roles to do so',
             },
             {
@@ -133,8 +133,8 @@ if(command === "help") {
       
         timestamp: new Date(),
         footer: {
-            text: 'Secret Hitler Bot By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+            text: 'RuseChat Bot Bot By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
     };
     
@@ -144,17 +144,17 @@ if(command === "help") {
 
   if(command === "invite") {
     const inviteEmbed = {
-        color: 0xdd0000,
-        title: 'Secret Hitler Bot Invite Link',
+        color: 0x175342,
+        title: 'RuseChat Bot V2 Invite Link',
         description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
         thumbnail: {
-            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
         
         timestamp: new Date(),
         footer: {
-            text: 'Secret Hitler Bot By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+            text: 'RuseChat Bot Bot By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
     };
     
@@ -174,8 +174,8 @@ if(command === "say") {
 
 
 if(command === "ping") {
-    const m = await message.channel.send("Bing!");
-    m.edit(`Bong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+    const m = await message.channel.send("Ping!");
+    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
 
@@ -227,21 +227,29 @@ if(command === "purge") {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
   }
   
+  if(command === "poll") {
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    message.channel.send(sayMessage).then(messageReaction =>{
+        messageReaction.react('👍');
+        messageReaction.react('👎'); 
+    });
+}
 
  //Game Commands
- if(command === "startgame") {
+ if(command === "startSHgame") {
     const sgEmbed = {
-        color: 0xdd0000,
+        color: 0x175342,
         title: 'A Game of Secret Hitler Awaits You',
         description: 'Please type in the number of players (min 5, max 8) to start the game...',
         thumbnail: {
-            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
         
         timestamp: new Date(),
         footer: {
-            text: 'Secret Hitler Bot By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
+            text: 'RuseChat Bot Bot By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
     };
     
