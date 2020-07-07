@@ -61,14 +61,74 @@ if(command === "help") {
         },
         fields: [
             {
-                name: 'Command Name: Command',
-                value: 'Description of Command',
+                name: 'Help: sh!help',
+                value: 'Displays this prompt showing a list of commands and how to use them.',
             },
             {
                 name: '\u200b',
                 value: '\u200b',
                 inline: false,
-            }
+            },
+            {
+                name: 'Invite: sh!invite',
+                value: 'Displays a prompt showing the invite link for this bot.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },
+            {
+                name: 'Say: sh!say [message]',
+                value: 'Displays the message on this bot, said by the user.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },
+            {
+                name: 'Ping: sh!ping',
+                value: 'Displays the true ping and API latency ping of the bot to the user.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },
+            {
+                name: 'Purge: sh!purge [number]',
+                value: 'Conquers andd deletes the amount of messages sent prior for mass clean.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },{
+                name: 'Kick: sh!kick [@user] [reason]',
+                value: 'Kicks specified user. Both Bot and User should have kick and/or moderator roles to do so.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },{
+                name: 'Ban: sh!ban [@user] [reason]',
+                value: 'Bans specified user. Both Bot and User should have Ban and/or Administrator roles to do so',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },{
+                name: 'More Commands Soon to Come!',
+                value: 'DM @theRadOngKid2#1241 for feedback and bug reports.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
+            },
         ],
       
         timestamp: new Date(),
@@ -83,10 +143,9 @@ if(command === "help") {
   }
 
   if(command === "invite") {
-    const helpEmbed = {
+    const inviteEmbed = {
         color: 0xdd0000,
         title: 'Secret Hitler Bot Invite Link',
-        url: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
         description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
         thumbnail: {
             url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
@@ -99,7 +158,7 @@ if(command === "help") {
         },
     };
     
-    message.channel.send({ embed: helpEmbed });
+    message.channel.send({ embed: inviteEmbed });
     
   }
 
@@ -115,8 +174,8 @@ if(command === "say") {
 
 
 if(command === "ping") {
-    const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+    const m = await message.channel.send("Bing!");
+    m.edit(`Bong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
 
@@ -170,12 +229,11 @@ if(command === "purge") {
   
 
  //Game Commands
- if(command === "startGame") {
-    const helpEmbed = {
+ if(command === "startgame") {
+    const sgEmbed = {
         color: 0xdd0000,
         title: 'A Game of Secret Hitler Awaits You',
-        url: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
-        description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
+        description: 'Please type in the number of players (min 5, max 8) to start the game...',
         thumbnail: {
             url: 'https://cdn.discordapp.com/attachments/694469683281395742/730017345640333369/hitler-at-dortmund-rally.jpg',
         },
@@ -187,7 +245,7 @@ if(command === "purge") {
         },
     };
     
-    message.channel.send({ embed: helpEmbed });
+    message.channel.send({ embed: sgEmbed });
     
   } 
 });
