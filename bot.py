@@ -1,10 +1,11 @@
 import discord
-from discord.ext import commands
 
-client = commands.Bot(command_prefix= "sh!")
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged on as {0}!'.format(self.user))
 
-@client.event
-async def on_ready():
-    print("Bot has been activated...")
+    async def on_message(self, message):
+        print('Message from {0.author}: {0.content}'.format(message))
 
-client.run("NzMwMDA0MTAzNzE5Mjg4OTA0.XwRPMA.frIWsNOKAoVgzOM7NbfZDCcOypA")
+client = MyClient()
+client.run('NzMwMDA0MTAzNzE5Mjg4OTA0.XwRPMA.frIWsNOKAoVgzOM7NbfZDCcOypA')
