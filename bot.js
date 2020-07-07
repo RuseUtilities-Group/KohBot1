@@ -153,7 +153,7 @@ if(command === "help") {
     const inviteEmbed = {
         color: 0x175342,
         title: 'RuseChat Bot V2 Invite Link',
-        description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=8&scope=bot',
+        description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=2147483639&scope=bot',
         thumbnail: {
             url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
