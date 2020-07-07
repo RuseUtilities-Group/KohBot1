@@ -54,7 +54,7 @@ client.on("message", async message => {
 
 if(command === "help") {
     const exampleEmbed = {
-        color: ,
+        color: DD0000,
         title: 'Some title',
         description: 'Some description here',
         thumbnail: {
