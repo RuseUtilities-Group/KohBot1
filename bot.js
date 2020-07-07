@@ -133,7 +133,7 @@ if(command === "help") {
       
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot Bot By RuseUtilities Group',
+            text: 'RuseChat Bot V2 By RuseUtilities Group',
             icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
     };
@@ -153,7 +153,7 @@ if(command === "help") {
         
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot Bot By RuseUtilities Group',
+            text: 'RuseChat Bot V2 By RuseUtilities Group',
             icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
     };
@@ -248,7 +248,7 @@ if(command === "purge") {
         
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot Bot By RuseUtilities Group',
+            text: 'RuseChat Bot V2 By RuseUtilities Group',
             icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
         },
     };
