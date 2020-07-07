@@ -48,7 +48,7 @@ client.on('message', (receivedMessage) => {
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === 'announcements');
     if (!channel) return;
-    channel.send(`Welcome ${member} to the Ruse Loners4Lyfe Remastered Server!`);
+    channel.send(`Welcome ${member} to the Server!`);
   });
 
   
