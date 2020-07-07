@@ -127,6 +127,15 @@ if(command === "help") {
                 name: '\u200b',
                 value: '\u200b',
                 inline: false,
+            },
+            {
+                name: 'Poll: r!poll [question]',
+                value: 'Creates a poll where the bot reacts with thumbs up and down.',
+            },
+            {
+                name: '\u200b',
+                value: '\u200b',
+                inline: false,
             },{
                 name: 'More Commands Soon to Come!',
                 value: 'DM @theRadOngKid2#1241 for feedback and bug reports.',
