@@ -261,11 +261,24 @@ if(command === "purge") {
 }
 
 if(command === "reactRole") {
-  const sayMessage = args.join(" ");
+  const roleMentioned = args.join(" ");
+  function getUserFromMention(mentionedRole) {
+    const matches = mentionedRole.match(/^<@!?(\d+)>$/);
+    if (!matches){
+      message.channel.send("Please Enter a Valid Role after  the command seperated with a space.");
+    };
+    
+    const id = matches[1];
+  
+    let roleId = client.users.cache.get(id);
+    message.channel.send(roleId);
+  
+  }
+  getUserFromMention(roleMentioned);
+
   message.delete().catch(O_o=>{}); 
-  message.channel.send(sayMessage).then(messageReaction =>{
+  message.channel.send(`React to this Message to get the role ${roleMentioned}:`).then(messageReaction =>{
       messageReaction.react('👍');
-      messageReaction.react('👎'); 
   });
 }
 
