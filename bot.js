@@ -200,6 +200,14 @@ if(command === "help") {
               value: '\u200b',
               inline: false,
           },{
+            name: 'User Stats: r!userstats [User Ping/ID]',
+            value: 'Displays a prompt with user information, and avatar image.',
+        },
+        {
+            name: '\u200b',
+            value: '\u200b',
+            inline: false,
+        },{
                 name: 'More Commands Soon to Come!',
                 value: 'DM @theRadOngKid2#1241 for feedback and bug reports.',
             },
@@ -361,7 +369,7 @@ if(command === "roll") {
 }
 
 
-if(command === "stats") {
+if(command === "userstats") {
   const args = message.content.split(' ');
     console.log(args);
     if(args.length > 2) {
@@ -374,6 +382,9 @@ if(command === "stats") {
         const userEmbed = {
           color: 0x175342,
           title: `${member.user.tag} (${member.id})`,
+          thumbnail: {
+            url: member.user.avatarURL
+          },
           fields: [
             {
               name: "User Created On",
@@ -401,54 +412,7 @@ if(command === "stats") {
       }
       
     } else {
-      const serverEmbed = {
-        color: 0x175342,
-        title: `${guild.name} (${guild.id})`,
-        description: `${guild.roles.cache.map(role => role.toString()).join(' ')}`,
-        fields: [
-          {
-          name: 'Date Created',
-          value: guild.createdAt.toLocaleString(),
-          },
-          {
-          name: 'Server Owner',
-          value: guild.owner.user.tag,
-          },
-          {
-          name: 'Total Members',
-          value: guild.memberCount
-          },
-          {
-          name: 'Human Members',
-          value: guild.members.cache.filter(member => !member.user.bot).size,
-          },
-          {
-          name: 'Total Bots',
-          value: guild.members.cache.filter(member => member.user.bot).size,
-          },
-          {
-          name: 'Total Channels',
-          value: guild.channels.cache.size,
-          },
-          {
-          name: 'Total Text Channels',
-          value: guild.channels.cache.filter(ch => ch.type === 'text').size,
-          },
-          {
-          name: 'Total Voice Channels',
-          value: guild.channels.cache.filter(ch => ch.type === 'voice').size,
-          }
-    ],
-        
-        
-        timestamp: new Date(),
-        footer: {
-            text: 'RuseChat Bot V2 By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
-        },
-    };
-    message.channel.send({ embed: serverEmbed });
-
+      message.channel.send("Include a user id/ping after r!userstats")
 }}
 
 
