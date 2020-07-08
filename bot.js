@@ -51,6 +51,113 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome ${member} to the Server!`);
   });
 
+  client.on('messageReactionAdd', async (reaction, user) => {
+    const handleStarboard = async () => {
+        const starboard = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
+        const msgs = await starboard.messages.fetch({ limit: 100 });
+        const existingMsg = msgs.find(msg => 
+            msg.embeds.length === 1 ?
+            (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
+        if(existingMsg) existingMsg.edit(`${reaction.count} - ⭐`);
+        else {
+            const embed = new MessageEmbed()
+                .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
+                .addField('Url', reaction.message.url)
+                .setDescription(reaction.message.content)
+                .setFooter(reaction.message.id + ' - ' + new Date(reaction.message.createdTimestamp));
+            if(starboard)
+                starboard.send('1 - ⭐', embed);
+        }
+    }
+    if(reaction.emoji.name === '⭐') {
+        if(reaction.message.channel.name.toLowerCase() === 'starboard') return;
+        if(reaction.message.partial) {
+            await reaction.fetch();
+            await reaction.message.fetch();
+            handleStarboard();
+        }
+        else
+            handleStarboard();
+    }
+});
+client.on('messageReactionRemove', async (reaction, user) => {
+    const handleStarboard = async () => {
+        const starboard = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
+        const msgs = await starboard.messages.fetch({ limit: 100 });
+        const existingMsg = msgs.find(msg => 
+            msg.embeds.length === 1 ? 
+            (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
+        if(existingMsg) {
+            if(reaction.count === 0)
+                existingMsg.delete({ timeout: 2500 });
+            else
+                existingMsg.edit(`${reaction.count} - ⭐`)
+        };
+    }
+    if(reaction.emoji.name === '⭐') {
+        if(reaction.message.channel.name.toLowerCase() === 'starboard') return;
+        if(reaction.message.partial) {
+            await reaction.fetch();
+            await reaction.message.fetch();
+            handleStarboard();
+        }
+        else
+            handleStarboard();
+    }
+});
+
+const usersMap = new Map();
+const LIMIT = 5;
+const TIME = 7000;
+const DIFF = 3000;
+
+client.on('message', message => {
+  if(message.author.bot) return;
+  if(usersMap.has(message.author.id)) {
+    const userData = usersMap.get(message.author.id);
+    const { lastMessage, timer } = userData;
+    const difference = message.createdTimestamp - lastMessage.createdTimestamp;
+    let msgCount = userData.msgCount;
+    console.log(difference);
+    if(difference > DIFF) {
+      clearTimeout(timer);
+      console.log('Cleared timeout');
+      userData.msgCount = 1;
+      userData.lastMessage = message;
+      userData.timer = setTimeout(() => {
+        usersMap.delete(message.author.id);
+        console.log('Removed from RESET.');
+      }, TIME);
+      usersMap.set(message.author.id, userData);
+    }
+    else {
+      ++msgCount;
+      if(parseInt(msgCount) === LIMIT) {
+        const role = message.guild.roles.cache.get('');
+        message.member.roles.add(role);
+        message.channel.send('You have been muted.');
+        setTimeout(() => {
+          message.member.roles.remove(role);
+          message.channel.send('You have been unmuted');
+        }, TIME);
+      } else {
+        userData.msgCount = msgCount;
+        usersMap.set(message.author.id, userData);
+      }
+    }
+  }
+  else {
+    let fn = setTimeout(() => {
+      usersMap.delete(message.author.id);
+      console.log('Removed from map.');
+    }, TIME);
+    usersMap.set(message.author.id, {
+      msgCount: 1,
+      lastMessage: message,
+      timer: fn
+    });
+  }
+});
   
 client.on("message", async message => {
   if(message.author.bot) return;
@@ -205,6 +312,8 @@ if(command === "ping") {
 
 
 if(command === "purge") {
+  if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
       return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
@@ -216,7 +325,7 @@ if(command === "purge") {
 
 
    if(command === "kick") {
-    if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
@@ -234,7 +343,7 @@ if(command === "purge") {
 
   
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Defenestration Administration"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -260,12 +369,12 @@ if(command === "purge") {
     });
 }
 
-if(command === "reactRole") {
+if(command === "reactrole") {
   const roleMentioned = args.join(" ");
   function getUserFromMention(mentionedRole) {
     const matches = mentionedRole.match(/^<@!?(\d+)>$/);
     if (!matches){
-      message.channel.send("Please Enter a Valid Role after  the command seperated with a space.");
+      message.channel.send("Please Enter a Valid Role after the command seperated with a space.");
     };
     
     const id = matches[1];
@@ -274,13 +383,18 @@ if(command === "reactRole") {
     message.channel.send(roleId);
   
   }
-  getUserFromMention(roleMentioned);
-
   message.delete().catch(O_o=>{}); 
-  message.channel.send(`React to this Message to get the role ${roleMentioned}:`).then(messageReaction =>{
-      messageReaction.react('👍');
-  });
+  let reactionMessage = `React to this Message to get the role **${roleMentioned}**:`
+  const reactEmbed = {
+    color: 0x175342,
+    title: reactionMessage,
+};
+
+message.channel.send({ embed: reactEmbed }).then(messageReaction =>{
+  messageReaction.react('👍');
+});
 }
+
 
 if(command === "roll") {
   const sidesCount = parseInt(args[0], 10);
