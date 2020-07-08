@@ -374,7 +374,6 @@ if(command === "stats") {
         const userEmbed = {
           color: 0x175342,
           title: `${member.user.tag} (${member.id})`,
-          description: `${member.roles.cache.map(role => role.toString()).join(' ')}`,
           fields: [
             {
               name: "User Created On",
@@ -383,10 +382,6 @@ if(command === "stats") {
             {
               name: "User Joined the Server On",
               value: member.joinedAt
-            },
-            {
-              name: "Current Voice Channel",
-              value: member.voice.channel ? member.voice.channel.name + `(${member.voice.channel.id})` : 'None'
             },
             {
               name: "User Status",
