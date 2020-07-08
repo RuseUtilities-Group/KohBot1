@@ -137,6 +137,14 @@ if(command === "help") {
                 value: '\u200b',
                 inline: false,
             },{
+              name: 'Roll: r!roll [Amount of Sides]',
+              value: 'Generates a random number between 1 and the Amount of sides (min 2) given.',
+          },
+          {
+              name: '\u200b',
+              value: '\u200b',
+              inline: false,
+          },{
                 name: 'More Commands Soon to Come!',
                 value: 'DM @theRadOngKid2#1241 for feedback and bug reports.',
             },
@@ -251,6 +259,23 @@ if(command === "purge") {
         messageReaction.react('👎'); 
     });
 }
+
+if(command === "roll") {
+  const sidesCount = parseInt(args[0], 10);
+  if(!sidesCount || sidesCount < 2 || sidesCount > 100)
+    return message.reply("Please provide a number between 2 and 1000 for the Max number on the dice to roll");
+    var dice = {
+      sides: sidesCount,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result = dice.roll();
+    message.channel.send(result)
+    
+}
+
 
  //Game Commands
  if(command === "startSHgame") {
