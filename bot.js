@@ -371,16 +371,36 @@ if(command === "stats") {
         message.mentions.members.first() :
         message.guild.members.cache.get(args[1]);
       if(member) {
-        const embed = new MessageEmbed()
-          .setAuthor(`${member.user.tag} (${member.id})`, member.user.displayAvatarURL())
-          .setThumbnail(member.user.displayAvatarURL())
-          .addField('Created On', member.user.createdAt.toLocaleString(), true)
-          .addField('Joined On', member.joinedAt, true)
-          .addField('Kickable', member.kickable, false)
-          .addField('Voice Channel', member.voice.channel ? member.voice.channel.name + `(${member.voice.channel.id})` : 'None')
-          .addField('Presence', member.presence.status)
-          .setDescription(`${member.roles.cache.map(role => role.toString()).join(' ')}`);
-        message.channel.send(embed);
+        const userEmbed = {
+          color: 0x175342,
+          title: `${member.user.tag} (${member.id})`,
+          description: `${member.roles.cache.map(role => role.toString()).join(' ')}`,
+          fields: [
+            {
+              name: "User Created On",
+              value: member.user.createdAt.toLocaleString()
+            },
+            {
+              name: "User Joined the Server On",
+              value: member.joinedAt
+            },
+            {
+              name: "Current Voice Channel",
+              value: member.voice.channel ? member.voice.channel.name + `(${member.voice.channel.id})` : 'None'
+            },
+            {
+              name: "User Status",
+              value: member.presence.status
+            }
+          ],
+        timestamp: new Date(),
+        footer: {
+            text: 'RuseChat Bot V2 By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        },
+        }
+        
+        message.channel.send({ embed: userEmbed });
       } else {
         message.channel.send(`I couldn't find that member with ID ${args[1]}`);
       }
@@ -388,7 +408,7 @@ if(command === "stats") {
     } else {
       const serverEmbed = {
         color: 0x175342,
-        title: `${guild.name} (${guild.id})`, guild.iconURL(),
+        title: `${guild.name} (${guild.id})`,
         description: `${guild.roles.cache.map(role => role.toString()).join(' ')}`,
         fields: [
           {
@@ -423,7 +443,7 @@ if(command === "stats") {
           name: 'Total Voice Channels',
           value: guild.channels.cache.filter(ch => ch.type === 'voice').size,
           }
-    ]
+    ],
         
         
         timestamp: new Date(),
@@ -434,7 +454,7 @@ if(command === "stats") {
     };
     message.channel.send({ embed: serverEmbed });
 
-  };
+}}
 
 
  //Game Commands
