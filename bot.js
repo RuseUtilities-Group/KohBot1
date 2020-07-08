@@ -260,6 +260,15 @@ if(command === "purge") {
     });
 }
 
+if(command === "reactRole") {
+  const sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{}); 
+  message.channel.send(sayMessage).then(messageReaction =>{
+      messageReaction.react('👍');
+      messageReaction.react('👎'); 
+  });
+}
+
 if(command === "roll") {
   const sidesCount = parseInt(args[0], 10);
   if(!sidesCount || sidesCount < 2 || sidesCount > 100)
