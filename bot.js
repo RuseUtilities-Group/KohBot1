@@ -361,6 +361,82 @@ if(command === "roll") {
 }
 
 
+if(command === "stats") {
+  const args = message.content.split(' ');
+    console.log(args);
+    if(args.length > 2) {
+      message.channel.send(`Incorrect Usage: !stats | !stats <user_id> | !stats @mention`);
+    } else if(args.length === 2) {
+      const member = message.mentions.members.size === 1 ? 
+        message.mentions.members.first() :
+        message.guild.members.cache.get(args[1]);
+      if(member) {
+        const embed = new MessageEmbed()
+          .setAuthor(`${member.user.tag} (${member.id})`, member.user.displayAvatarURL())
+          .setThumbnail(member.user.displayAvatarURL())
+          .addField('Created On', member.user.createdAt.toLocaleString(), true)
+          .addField('Joined On', member.joinedAt, true)
+          .addField('Kickable', member.kickable, false)
+          .addField('Voice Channel', member.voice.channel ? member.voice.channel.name + `(${member.voice.channel.id})` : 'None')
+          .addField('Presence', member.presence.status)
+          .setDescription(`${member.roles.cache.map(role => role.toString()).join(' ')}`);
+        message.channel.send(embed);
+      } else {
+        message.channel.send(`I couldn't find that member with ID ${args[1]}`);
+      }
+      
+    } else {
+      const serverEmbed = {
+        color: 0x175342,
+        title: `${guild.name} (${guild.id})`, guild.iconURL(),
+        description: `${guild.roles.cache.map(role => role.toString()).join(' ')}`,
+        fields: [
+          {
+          name: 'Date Created',
+          value: guild.createdAt.toLocaleString(),
+          },
+          {
+          name: 'Server Owner',
+          value: guild.owner.user.tag,
+          },
+          {
+          name: 'Total Members',
+          value: guild.memberCount
+          },
+          {
+          name: 'Human Members',
+          value: guild.members.cache.filter(member => !member.user.bot).size,
+          },
+          {
+          name: 'Total Bots',
+          value: guild.members.cache.filter(member => member.user.bot).size,
+          },
+          {
+          name: 'Total Channels',
+          value: guild.channels.cache.size,
+          },
+          {
+          name: 'Total Text Channels',
+          value: guild.channels.cache.filter(ch => ch.type === 'text').size,
+          },
+          {
+          name: 'Total Voice Channels',
+          value: guild.channels.cache.filter(ch => ch.type === 'voice').size,
+          }
+    ]
+        
+        
+        timestamp: new Date(),
+        footer: {
+            text: 'RuseChat Bot V2 By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        },
+    };
+    message.channel.send({ embed: serverEmbed });
+
+  };
+
+
  //Game Commands
  if(command === "startSHgame") {
     const sgEmbed = {
