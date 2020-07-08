@@ -106,6 +106,11 @@ client.on('messageReactionRemove', async (reaction, user) => {
     }
 });
 
+client.on('message', message => {
+  if(message.author.bot) return;
+  console.log(message.mentions);
+  if(message.content.toLowerCase().startsWith('pog')) { message.channel.send("https://cdn.discordapp.com/emojis/710485634665545809.png?v=1")}
+});
 
 client.on("message", async message => {
   if(message.author.bot) return;
