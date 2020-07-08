@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
+const ytdl = require('ytdl-core');
+
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
@@ -104,6 +106,25 @@ client.on('messageReactionRemove', async (reaction, user) => {
         else
             handleStarboard();
     }
+});
+
+client.on('message', message => {
+	if (message.content === 'r!play') {
+		if (message.channel.type !== 'text') return;
+
+		const voiceChannel = message.member.voice.channel;
+
+		if (!voiceChannel) {
+			return message.reply('please join a voice channel first!');
+		}
+
+		voiceChannel.join().then(connection => {
+			const stream = ytdl('https://www.youtube.com/watch?v=D57Y1PruTlw', { filter: 'audioonly' });
+			const dispatcher = connection.play(stream);
+
+			dispatcher.on('finish', () => voiceChannel.leave());
+		});
+	}
 });
 
 client.on('message', message => {
