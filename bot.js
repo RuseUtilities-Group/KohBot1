@@ -284,8 +284,8 @@ if(command === "reactRole") {
 
 if(command === "roll") {
   const sidesCount = parseInt(args[0], 10);
-  if(!sidesCount || sidesCount < 2 || sidesCount > 1000)
-    return message.reply("Please provide a number between 2 and 1000 for the Max number on the dice to roll");
+  if(!sidesCount || sidesCount < 2)
+    return message.reply("Please provide a number between 2 and Infinity for the Max number on the dice to roll");
     var dice = {
       sides: sidesCount,
       roll: function () {
