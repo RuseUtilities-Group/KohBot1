@@ -462,32 +462,40 @@ if(command === "userstats") {
 
 if(command === "snipe") {
   let chn = `${message.channel.id}`;
-var snipechannel = snipes.chn; // to call an specific deleted message I guess
+  var snipechannel = snipes[chn]; // to call an specific deleted message I guess
 
-if (snipechannel[0] === "No snipes") {
-  message.channel.send("What? There are no deleted messages atm");
-} else {
-  const embed = {
-    "color": 5608903,
-    "footer": {
-      "text": `Sniped by: ${message.author.tag}`
+  if (snipechannel[0] === "No snipes") {
+    message.channel.send("What? There are no deleted messages atm");
+  } else {
+    const snipeEmbed = {
+      color: 0x175342,
+      title: `${member.user.tag} (${member.id})`,
+      thumbnail: {
+        url: member.user.avatarURL
+      },
+      fields: [
+        {
+          name: `"${snipechannel[1]} said..."`,
+          value: `${snipechannel[0]}`
+        }
+      ],
+    timestamp: new Date(),
+    footer: {
+        text: 'RuseChat Bot V2 By RuseUtilities Group',
+        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
     },
-    "fields": [{
-      "name": `${snipechannel[1]} said...`,
-      "value": `${snipechannel[0]}`
-    }]
-  };
-  await message.channel.send({
-    embed
-  });
-  snipechannel[0] = "No snipes";
+    }
+    
+    message.channel.send({ embed: snipeEmbed });
+    
+    snipechannel[0] = "No snipes";
 
-  var fileName = './snipe.json';
-  var file = require(fileName);
+    var fileName = './snipe.json';
+    var file = require(fileName);
 
-  fs.writeFile(fileName, JSON.stringify(file, null, 2), function(error) {
-    if (error) {
-      return console.log('oops');
+    fs.writeFile(fileName, JSON.stringify(file, null, 2), function(error) {
+      if (error) {
+        return console.log('oops');
     }
   });
 }
