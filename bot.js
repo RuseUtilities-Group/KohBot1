@@ -467,7 +467,7 @@ if(command === "rdg") {
         },
         {
           name: winMessage,
-          value: "Good Job!"
+          value: ":)"
         }
       ],
       
@@ -478,8 +478,6 @@ if(command === "rdg") {
     num++
 
   }
-
-  message.channel.send(`Game Finished...`)
 
   const endEmbed = {
     color: 0x175342,
