@@ -478,7 +478,7 @@ if(command === "rdg") {
         },
         {
           name: winMessage,
-          value: ":)"
+          value: "🎲"
         }
       ],
       
