@@ -450,30 +450,31 @@ if(command === "rdg") {
     }else if(result1 === result2){
       winMessage = 'You and the Bot Tied!'
     }
-    const drgEmbed = {
+    const rgEmbed = {
       color: 0x175342,
-      title: `DRG Round ${num + 1} Results:`,
+      title: `DRG Round ${num} Results:`,
       thumbnail: {
           url: 'https://cdn.discordapp.com/attachments/694469683281395742/730759143161331803/Dice-6-6-1.png',
       },
       fields: [
         {
           name: "You Rolled a:",
-          value: `${result1}`
+          value: result1
         },
         {
           name: "Bot Rolled a:",
-          value: `${result2}`
+          value: result2
         },
         {
-          name: `${winMessage}`,
-          value: ""
+          name: winMessage,
+          value: "Next round..."
         }
       ],
       
       timestamp: new Date()
     };
-    message.channel.send({ embed: drgEmbed });
+
+    message.channel.send({ embed: rgEmbed });
     num++
 
   }
