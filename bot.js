@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
+const snipes = require("./snipe.json");
 const ytdl = require('ytdl-core');
 
 
@@ -27,6 +28,25 @@ client.on('ready', () => {
         console.log(" - " + guild.name)
     })
 })
+
+client.on("messageDelete", (message) => {
+  if (message.author.bot) return;
+
+
+  snipes[`${message.channel.id}`] = [`${message}`, `${message.author.tag}`];
+
+  var fs = require('fs');
+  var fileName = './snipe.json';
+
+  fs.writeFile(fileName, JSON.stringify(snipes, null, 2), function(error) {
+    if (error) {
+      return console.log('oops')
+    }
+  });
+});
+
+
+
 
 client.on("guildCreate", guild => {
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
@@ -126,10 +146,9 @@ client.on('message', message => {
 		});
 	}
 });
-
+//  console.log(message.mentions); Shows every single message
 client.on('message', message => {
   if(message.author.bot) return;
-  console.log(message.mentions);
   if(message.content.toLowerCase().startsWith('pog')) { message.channel.send("https://cdn.discordapp.com/emojis/710485634665545809.png?v=1")}
 });
 
@@ -441,6 +460,9 @@ if(command === "userstats") {
       message.channel.send("Include a user id/ping after r!userstats")
 }}
 
+if(command === "snipe") {
+
+}
 
  //Game Commands
  if(command === "startSHgame") {
