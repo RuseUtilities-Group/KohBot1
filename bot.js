@@ -181,7 +181,7 @@ if(command === "help") {
             inline: false,
         },{
           name: 'Dice Rolling Game: r!rdg [Amount of Rounds to Play]',
-          value: 'A minigame where you and the bot roll dice!',
+          value: 'A minigame where you and the bot roll dice! *Note: You can only play maximum of 15 rounds',
       },
       {
           name: '\u200b',
