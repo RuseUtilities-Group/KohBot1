@@ -409,8 +409,9 @@ if(command === "userstats") {
   } 
 
 if(command === "rdg") {
-  var num = 0
+  var num = 1
   var amountWins = 0
+  var winMessage
 
   const gameAmounts = args.join(" ");
   var gaNum = parseInt(gameAmounts, 10)
@@ -420,7 +421,7 @@ if(command === "rdg") {
     message.delete().catch(O_o=>{}); 
   
   while(num !== gaNum) {
-    message.channel.send(`User rolling dice...`)
+
     var dice1 = {
       sides: 6,
       roll: function () {
@@ -428,11 +429,9 @@ if(command === "rdg") {
         return randomNumber;
       }
     }
-    var result1 = dice1.roll();
-    message.channel.send(`You rolled a ${result1}!`)
+
     result1 = parseInt(dice1.roll(), 10);
 
-    message.channel.send(`Bot rolling dice...`)
     var dice2 = {
       sides: 6,
       roll: function () {
@@ -440,26 +439,63 @@ if(command === "rdg") {
         return randomNumber;
       }
     }
-    var result2 = dice2.roll();
-    message.channel.send(`Bot rolled a ${result2}`)
+
     result2 = parseInt(dice2.roll(), 10);
 
     if(result1 > result2){
-      message.channel.send(`You win this round!`)
+      winMessage = `You win this round!`
       amountWins++
-    }else if(result2 < result2){
-      message.channel.send(`Bot wins this round!`)
-    }else{
-      message.channel.send('You and the Bot Tied!')
+    }else if(result1 < result2){
+      winMessage = `Bot wins this round!`
+    }else if(result1 === result2){
+      winMessage = 'You and the Bot Tied!'
     }
-
+    const drgEmbed = {
+      color: 0x175342,
+      title: `DRG Round ${num} Results:`,
+      thumbnail: {
+          url: 'https://cdn.discordapp.com/attachments/694469683281395742/730759143161331803/Dice-6-6-1.png',
+      },
+      fields: [
+        {
+          name: "You Rolled a:",
+          value: `${result1}`
+        },
+        {
+          name: "Bot Rolled a:",
+          value: `${result2}`
+        },
+        {
+          name: `${winMessage}`,
+          value: ""
+        }
+      ],
+      
+      timestamp: new Date()
+    };
+    message.channel.send({ embed: drgEmbed });
     num++
 
   }
 
   message.channel.send(`Game Finished...`)
-  message.channel.send(`You won ${amountWins} out of ${num} games!`)
 
+  const endEmbed = {
+    color: 0x175342,
+    title: 'Game Results:',
+    description: `You won ${amountWins} out of ${num} games!`,
+    thumbnail: {
+        url: 'https://cdn.discordapp.com/attachments/694469683281395742/730759143161331803/Dice-6-6-1.png',
+    },
+    
+    timestamp: new Date(),
+    footer: {
+        text: 'RuseChat Bot V2 By RuseUtilities Group',
+        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+    },
+};
+
+message.channel.send({ embed: endEmbed });
 
 }
 });
