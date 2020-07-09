@@ -407,4 +407,59 @@ if(command === "userstats") {
     message.channel.send({ embed: sgEmbed });
     
   } 
+
+if(command === "rdg") {
+  var num = 0
+  var amountWins = 0
+
+  const gameAmounts = args.join(" ");
+  var gaNum = parseInt(gameAmounts, 10)
+  if(!gaNum){
+    gaNum = 1
+  }
+    message.delete().catch(O_o=>{}); 
+  
+  while(num !== gaNum) {
+    message.channel.send(`User rolling dice...`)
+    var dice1 = {
+      sides: 6,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result1 = dice1.roll();
+    message.channel.send(`You rolled a ${result1}!`)
+    result1 = parseInt(dice1.roll(), 10);
+
+    message.channel.send(`Bot rolling dice...`)
+    var dice2 = {
+      sides: 6,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result2 = dice2.roll();
+    message.channel.send(`Bot rolled a ${result2}`)
+    result2 = parseInt(dice2.roll(), 10);
+
+    if(result1 > result2){
+      message.channel.send(`You win this round!`)
+      amountWins++
+    }else if(result2 < result2){
+      message.channel.send(`Bot wins this round!`)
+    }else{
+      message.channel.send('You and the Bot Tied!')
+    }
+
+    num++
+
+  }
+
+  message.channel.send(`Game Finished...`)
+  message.channel.send(`You won ${amountWins} out of ${num} games!`)
+
+
+}
 });
