@@ -180,6 +180,14 @@ if(command === "help") {
             value: '\u200b',
             inline: false,
         },{
+          name: 'Dice Rolling Game: r!rdg [Amount of Rounds to Play]',
+          value: 'A minigame where you and the bot roll dice!',
+      },
+      {
+          name: '\u200b',
+          value: '\u200b',
+          inline: false,
+      },{
                 name: 'More Commands Soon to Come!',
                 value: 'DM @theRadOngKid2#1241 for feedback and bug reports.',
             },
