@@ -29,24 +29,10 @@ client.on('ready', () => {
     })
 })
 
-client.on("messageDelete", (message) => {
-  if (message.author.bot) return;
-
-
-  snipes[`${message.channel.id}`] = [`${message}`, `${message.author.tag}`];
-
-  var fs = require('fs');
-  var fileName = './snipe.json';
-
-  fs.writeFile(fileName, JSON.stringify(snipes, null, 2), function(error) {
-    if (error) {
-      return console.log('oops')
-    }
-  });
-});
-
-
-
+client.on("messageDelete", (messageDelete) => {
+  var deletedMessage = `The message : "${messageDelete.content}" by ${messageDelete.author.tag} was deleted.`
+ });
+ 
 
 client.on("guildCreate", guild => {
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
@@ -461,44 +447,7 @@ if(command === "userstats") {
 }}
 
 if(command === "snipe") {
-  let chn = `${message.channel.id}`;
-  var snipechannel = snipes[chn]; // to call an specific deleted message I guess
-
-  if (snipechannel[0] === "No snipes") {
-    message.channel.send("What? There are no deleted messages atm");
-  } else {
-    const snipeEmbed = {
-      color: 0x175342,
-      title: `${member.user.tag} (${member.id})`,
-      thumbnail: {
-        url: member.user.avatarURL
-      },
-      fields: [
-        {
-          name: `"${snipechannel[1]} said..."`,
-          value: `${snipechannel[0]}`
-        }
-      ],
-    timestamp: new Date(),
-    footer: {
-        text: 'RuseChat Bot V2 By RuseUtilities Group',
-        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
-    },
-    }
-    
-    message.channel.send({ embed: snipeEmbed });
-    
-    snipechannel[0] = "No snipes";
-
-    var fileName = './snipe.json';
-    var file = require(fileName);
-
-    fs.writeFile(fileName, JSON.stringify(file, null, 2), function(error) {
-      if (error) {
-        return console.log('oops');
-    }
-  });
-}
+  message.channel.sendCode(deletedMessage)
 }
 
  //Game Commands
