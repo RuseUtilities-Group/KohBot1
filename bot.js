@@ -425,6 +425,9 @@ if(command === "rdg") {
   var gaNum = parseInt(gameAmounts, 10)
   if(!gaNum){
     gaNum = 1
+  }else if(gaNum < 15){
+    message.channel.send("You can play a maximum of 15 rounds")
+    gaNum = 0
   }
 
   
@@ -486,7 +489,7 @@ if(command === "rdg") {
     num++
 
   }
-
+  
   const endEmbed = {
     color: 0x175342,
     title: 'Game Results:',
