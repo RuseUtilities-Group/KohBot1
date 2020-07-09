@@ -409,7 +409,7 @@ if(command === "userstats") {
   } 
 
 if(command === "rdg") {
-  var num = 1
+  var num = 0
   var amountWins = 0
   var winMessage
 
@@ -452,7 +452,7 @@ if(command === "rdg") {
     }
     const drgEmbed = {
       color: 0x175342,
-      title: `DRG Round ${num} Results:`,
+      title: `DRG Round ${num + 1} Results:`,
       thumbnail: {
           url: 'https://cdn.discordapp.com/attachments/694469683281395742/730759143161331803/Dice-6-6-1.png',
       },
