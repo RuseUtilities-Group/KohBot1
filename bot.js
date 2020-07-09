@@ -418,7 +418,7 @@ if(command === "rdg") {
   if(!gaNum){
     gaNum = 1
   }
-    message.delete().catch(O_o=>{}); 
+
   
   while(num !== gaNum) {
 
@@ -452,7 +452,7 @@ if(command === "rdg") {
     }
     const rgEmbed = {
       color: 0x175342,
-      title: `DRG Round ${num} Results:`,
+      title: `DRG Round ${num + 1} Results:`,
       thumbnail: {
           url: 'https://cdn.discordapp.com/attachments/694469683281395742/730759143161331803/Dice-6-6-1.png',
       },
@@ -467,7 +467,7 @@ if(command === "rdg") {
         },
         {
           name: winMessage,
-          value: "Next round..."
+          value: "Good Job!"
         }
       ],
       
