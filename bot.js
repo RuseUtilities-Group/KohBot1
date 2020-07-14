@@ -360,7 +360,7 @@ if(command === "userstats") {
       if(member) {
         const userEmbed = {
           color: 0x175342,
-          title: `${member.user.tag} (${member.id})`,
+          title: `${member.username}`,
           thumbnail: {
             url: member.user.avatarURL
           },
@@ -502,9 +502,110 @@ if(command === "rdg") {
         text: 'RuseChat Bot V2 By RuseUtilities Group',
         icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
     },
-};
-
-message.channel.send({ embed: endEmbed });
+  };
+  message.channel.send({ embed: endEmbed });
 
 }
-});
+
+if(command === "guessnum") {
+
+  let count = 1
+  let maxCount = 4
+  let maxNum
+
+  const roundInString = args.join(" ");
+  maxNum = parseInt(roundInString, 10)
+  if(maxNum > 100){
+    message.channel.send("The bot can only generate a number between 1 and maximum 100, Try Again but this time follow the rules :)")
+    maxNum = null
+  }else if(!gaNum){
+    maxNum = 10
+  }
+ 
+  var dice = {
+    sides: maxNum,
+    roll: function () {
+      var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+      return randomNumber;
+    }
+  }
+  var numThinkingOf = dice.roll();
+  console.log(`I'm thinking of ${numThinkingOf}`)
+
+
+  const displayMessageEmbed = {
+    color: 0x175342,
+    title: `I am Thinking of a Number Between 1 and ${maxNum}`,
+    description: `You have 3 Chances (5 secs each) to guess the number, Type your guess in chat...`,
+    thumbnail: {
+        url: 'https://cdn.discordapp.com/attachments/694469683281395742/731318220652281976/86qLqaUq_400x400.png',
+    },
+    
+    timestamp: new Date(),
+    footer: {
+        text: 'RuseChat Bot V2 By RuseUtilities Group',
+        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+    },
+  };
+
+  message.channel.send({ embed: displayMessageEmbed });
+
+
+  const correctMessageEmbed = {
+    color: 0x175342,
+    title: `Correct Answer`,
+    description: `You won on guess number ${count}`,
+    thumbnail: {
+        url: 'https://cdn.discordapp.com/attachments/694469683281395742/731318220652281976/86qLqaUq_400x400.png',
+    },
+    
+    timestamp: new Date(),
+    footer: {
+        text: 'RuseChat Bot V2 By RuseUtilities Group',
+        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+    },
+  };
+
+  const loseMessageEmbed = {
+    color: 0x175342,
+    title: `You Lost!`,
+    description: `The number I was thinking of was ${numThinkingOf}`,
+    thumbnail: {
+        url: 'https://cdn.discordapp.com/attachments/694469683281395742/731318220652281976/86qLqaUq_400x400.png',
+    },
+    
+    timestamp: new Date(),
+    footer: {
+        text: 'RuseChat Bot V2 By RuseUtilities Group',
+        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+    },
+  };
+
+  function messageHandle(){
+    
+    
+
+    if(count > maxCount){
+      clearInterval(intervalFunct)}else{
+        if(count === 4){
+          message.channel.send({ embed: loseMessageEmbed });
+        }
+        var guessedNum = parseInt(message.content, 10)
+
+        if(guessedNum === numThinkingOf) {
+          message.channel.send({ embed: correctMessageEmbed });
+          count = 3
+        }else if(guessedNum > numThinkingOf){
+          message.channel.send(`The number is LOWER, Try again... You have ${maxCount - count} try(s) left`)
+        }else if(guessedNum < numThinkingOf){
+          message.channel.send(`The number is HIGHER, Try again... You have ${maxCount - count} try(s) left`)
+        }else{
+          message.channel.send("!!!WRONG ANSWER!!!")
+  }
+        count++
+    }
+  }
+  var intervalFunct = setInterval(messageHandle, 5000 );
+}
+
+}); 
