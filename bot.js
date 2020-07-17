@@ -609,3 +609,26 @@ if(command === "guessnum") {
 }
 
 }); 
+
+//Delphine Blocker
+client.on("message", message => {
+  var readingMessage = message.content;
+  var delphineYTvids = [
+    "belledelphine",
+    "BelleDelphine",
+    "UCXvKUavCtDOlA8bT1i2tI3w",
+    "IoHZp57O1AY",
+    "TL470fJMi7w",
+    "iY27pp3vnrA",
+    "A_D9mR8bTI8",
+    "fx5WJZuGA0I",
+    "9r0Xe7ESrBE"
+  ];
+
+  for(num in delphineYTvids){
+    if(readingMessage.includes(delphineYTvids[num])){
+      readingMessage.delete();
+      message.channel.send("A message containg a Belle Delphine Youtube Related Links has been deleted!")
+  };
+  };
+});
