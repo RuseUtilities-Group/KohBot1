@@ -394,6 +394,14 @@ if(command === "userstats") {
       message.channel.send("Include a user id/ping after r!userstats")
 }}
 
+if(command === "massRoleAdd"){
+  let epicRole = message.guild.roles.cache.get('ROLE_ID_HERE');
+    const member = message.mentions.members.first();
+
+    member.roles.add(epicRole);
+    message.channel.send('Role Added')
+}
+
  //Game Commands
  if(command === "startSHgame") {
     const sgEmbed = {
@@ -607,6 +615,7 @@ if(command === "guessnum") {
   }
   var intervalFunct = setInterval(messageHandle, 5000 );
 }
+
 
 }); 
 
