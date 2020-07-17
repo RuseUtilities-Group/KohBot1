@@ -621,7 +621,8 @@ client.on("message", message => {
     "iY27pp3vnrA",
     "A_D9mR8bTI8",
     "fx5WJZuGA0I",
-    "9r0Xe7ESrBE"
+    "9r0Xe7ESrBE",
+    "2CG6nFV"
   ];
 
   for(num in delphineYTvids){
