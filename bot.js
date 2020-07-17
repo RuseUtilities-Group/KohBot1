@@ -626,7 +626,7 @@ client.on("message", message => {
 
   for(num in delphineYTvids){
     if(message.content.includes(delphineYTvids[num])){
-      message.content.delete();
+      message.delete();
       message.channel.send("A message containg a Belle Delphine Youtube Related Links has been deleted!")
   };
   };
