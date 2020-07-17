@@ -612,7 +612,6 @@ if(command === "guessnum") {
 
 //Delphine Blocker
 client.on("message", message => {
-  var readingMessage = message.content;
   var delphineYTvids = [
     "belledelphine",
     "BelleDelphine",
@@ -626,8 +625,8 @@ client.on("message", message => {
   ];
 
   for(num in delphineYTvids){
-    if(readingMessage.includes(delphineYTvids[num])){
-      readingMessage.delete();
+    if(message.content.includes(delphineYTvids[num])){
+      message.content.delete();
       message.channel.send("A message containg a Belle Delphine Youtube Related Links has been deleted!")
   };
   };
