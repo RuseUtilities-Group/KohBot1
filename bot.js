@@ -394,12 +394,19 @@ if(command === "userstats") {
       message.channel.send("Include a user id/ping after r!userstats")
 }}
 
-if(command === "massRoleAdd"){
-  let epicRole = message.guild.roles.cache.get('ROLE_ID_HERE');
-    const member = message.mentions.members.first();
+if(command === "massroleadd"){
+  //if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
+      //return message.reply("Sorry, you don't have permissions to use this!");
+  const role = message.content.split(' ');
 
-    member.roles.add(epicRole);
-    message.channel.send('Role Added')
+  if (message.startsWith('<@&') && message.endsWith('>')) {
+    role = role.slice(3, -1);
+  }else{
+    return message.channel.send("Wrong Input, Must Type a Valid Role After the Command!")
+  }
+
+  message.channel.send(role)
+  message.channel.send("Type in all of the members who you want to assign the role to one by one, message by message. When Done say done.")
 }
 
  //Game Commands
