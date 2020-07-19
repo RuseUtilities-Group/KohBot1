@@ -78,6 +78,16 @@ client.on('message', message => {
   if(message.content.toLowerCase().startsWith('pog')) { message.channel.send("https://cdn.discordapp.com/emojis/710485634665545809.png?v=1")}
 });
 
+client.on('message', message => {
+  if(message.author.bot) return;
+  if(message.content.toLowerCase().includes('trump')) { message.channel.send("Trump Gay, Vote Biden")}
+});
+
+client.on('message', message => {
+  if(message.author.bot) return;
+  if(message.content.toLowerCase().includes('abs')) { message.react('')}
+});
+
 client.on("message", async message => {
   if(message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
@@ -397,9 +407,9 @@ if(command === "userstats") {
 if(command === "massroleadd"){
   //if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
       //return message.reply("Sorry, you don't have permissions to use this!");
-  const role = message.content.split(' ');
+  var role = message.content.split(' ');
 
-  if (message.startsWith('<@&') && message.endsWith('>')) {
+  if(role) {
     role = role.slice(3, -1);
   }else{
     return message.channel.send("Wrong Input, Must Type a Valid Role After the Command!")
