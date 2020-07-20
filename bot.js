@@ -357,6 +357,41 @@ if(command === "roll") {
     
 }
 
+if(command === "warn"){
+  if(!message.member.roles.some(r=>["Defenestration Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+      return message.reply("Sorry, you don't have permissions to use this!");
+  let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member){return message.channel.send("Please Specify a Member to Be Warned")}
+  let memberId = message.guild.members.get(args[0].slice(3, -1));
+  const member1 = message.mentions.members.size === 1 ? 
+        message.mentions.members.first() :
+        message.guild.members.cache.get(args[1]);
+  let reason = args.slice(1).join(' ');
+  let server = message.guild.name;
+    if(!reason){reason = "No reason provided"};
+  
+    const warnEmbed = {
+      color: 0x175342,
+      title: `Warn Log:`,
+      thumbnail: {
+        url: member.user.avatarURL
+      },
+      fields: [
+        {
+        name: `Username: ${member1.username}`,
+        value: `Warn Reason: ${reason}`
+        },
+      ],
+      timestamp: new Date(),
+        footer: {
+            text: 'RuseChat Bot V2 By RuseUtilities Group',
+            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        },
+    };
+    message.channel.send({ embed: warnEmbed });
+    client.users.get(memberId).send(`You have been warned in ${server} for ${reason}`);
+
+};
 
 if(command === "userstats") {
   const args = message.content.split(' ');
@@ -648,13 +683,15 @@ client.on("message", message => {
     "A_D9mR8bTI8",
     "fx5WJZuGA0I",
     "9r0Xe7ESrBE",
-    "2CG6nFV"
+    "2CG6nFV",
+    "eat my ass",
+    "i'm back"
   ];
 
   for(num in delphineYTvids){
     if(message.content.includes(delphineYTvids[num])){
       message.delete();
-      message.channel.send("A message containg a Belle Delphine Youtube Related Links has been deleted!")
+      message.channel.send("A message containg a Belle Delphine Youtube Links or illegal words has been detected and deleted!")
   };
   };
 });
