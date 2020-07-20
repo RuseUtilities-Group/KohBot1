@@ -378,7 +378,7 @@ if(command === "warn"){
       },
       fields: [
         {
-        name: `Username: ${member1.username}`,
+        name: `Username: ${member.user.username}`,
         value: `Warn Reason: ${reason}`
         },
       ],
