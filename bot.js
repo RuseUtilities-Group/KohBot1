@@ -174,7 +174,7 @@ if(command === "help") {
             name: '\u200b',
             value: '\u200b',
             inline: false,
-        },
+        },{
         name: 'Mass Role Removal: k!massremovalrole [@role] [@user] [@user1] [@user2]...',
         value: 'Removes the role to many people mentioned, Member needs mod or above to use this command.',
     },
