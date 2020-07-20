@@ -55,7 +55,7 @@ client.on('guildMemberAdd', member => {
   });
 
 client.on('message', message => {
-	if (message.content === 'r!play') {
+	if (message.content === 'k!play') {
 		if (message.channel.type !== 'text') return;
 
 		const voiceChannel = message.member.voice.channel;
@@ -93,13 +93,13 @@ if(command === "help") {
     const helpEmbed = {
         color: 0x9932CC,
         title: 'RuseChat Bot V2 Help Prompt',
-        description: 'Prefix: r!',
+        description: 'Prefix: k!',
         thumbnail: {
             url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
         fields: [
             {
-                name: 'Help: r!help',
+                name: 'Help: k!help',
                 value: 'Displays this prompt showing a list of commands and how to use them.',
             },
             {
@@ -108,7 +108,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Invite: r!invite',
+                name: 'Invite: k!invite',
                 value: 'Displays a prompt showing the invite link for this bot.',
             },
             {
@@ -117,7 +117,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Say: r!say [message]',
+                name: 'Say: k!say [message]',
                 value: 'Displays the message on this bot, said by the user.',
             },
             {
@@ -126,7 +126,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Ping: r!ping',
+                name: 'Ping: k!ping',
                 value: 'Displays the true ping and API latency ping of the bot to the user.',
             },
             {
@@ -135,7 +135,7 @@ if(command === "help") {
                 inline: false,
             },
             {
-                name: 'Purge: r!purge [number]',
+                name: 'Purge: k!purge [number]',
                 value: 'Deletes the specified amount of messages sent prior for mass clean.',
             },
             {
@@ -143,7 +143,7 @@ if(command === "help") {
                 value: '\u200b',
                 inline: false,
             },{
-                name: 'Kick: r!kick [@user] [reason]',
+                name: 'Kick: k!kick [@user] [reason]',
                 value: 'Kicks specified user. Both Bot and User should have kick and/or moderator roles to do so.',
             },
             {
@@ -151,7 +151,7 @@ if(command === "help") {
                 value: '\u200b',
                 inline: false,
             },{
-                name: 'Ban: r!ban [@user] [reason]',
+                name: 'Ban: k!ban [@user] [reason]',
                 value: 'Bans specified user. Both Bot and User should have Ban and/or Administrator roles to do so',
             },
             {
@@ -159,7 +159,7 @@ if(command === "help") {
                 value: '\u200b',
                 inline: false,
             },{
-              name: 'Warn: r!warn [@user] [reason]',
+              name: 'Warn: k!warn [@user] [reason]',
               value: 'Warns specified user. Both User should have Administrator or Moderator roles to do so',
           },
           {
@@ -167,7 +167,7 @@ if(command === "help") {
               value: '\u200b',
               inline: false,
           },{
-            name: 'Mass Role Assign: r!massignrole [@role] [@user] [@user1] [@user2]...',
+            name: 'Mass Role Assign: k!massignrole [@role] [@user] [@user1] [@user2]...',
             value: 'Assigns the role to many people mentioned, Member needs mod or above to use this command.',
         },
         {
@@ -175,8 +175,16 @@ if(command === "help") {
             value: '\u200b',
             inline: false,
         },
+        name: 'Mass Role Removal: k!massremovalrole [@role] [@user] [@user1] [@user2]...',
+        value: 'Removes the role to many people mentioned, Member needs mod or above to use this command.',
+    },
+    {
+        name: '\u200b',
+        value: '\u200b',
+        inline: false,
+    },
             {
-                name: 'Poll: r!poll [question]',
+                name: 'Poll: k!poll [question]',
                 value: 'Creates a poll where the bot reacts with thumbs up and down.',
             },
             {
@@ -184,7 +192,7 @@ if(command === "help") {
                 value: '\u200b',
                 inline: false,
             },{
-              name: 'Roll: r!roll [Amount of Sides]',
+              name: 'Roll: k!roll [Amount of Sides]',
               value: 'Generates a random number between 1 and the Amount of sides (min 2) given.',
           },
           {
@@ -192,7 +200,7 @@ if(command === "help") {
               value: '\u200b',
               inline: false,
           },{
-            name: 'User Stats: r!userstats [User Ping/ID]',
+            name: 'User Stats: k!userstats [User Ping/ID]',
             value: 'Displays a prompt with user information, and avatar image.',
         },
         {
@@ -200,7 +208,7 @@ if(command === "help") {
             value: '\u200b',
             inline: false,
         },{
-          name: 'Dice Rolling Game: r!rdg [Amount of Rounds to Play]',
+          name: 'Dice Rolling Game: k!rdg [Amount of Rounds to Play]',
           value: 'A minigame where you and the bot roll dice! *Note: You can only play maximum of 15 rounds',
       },
       {
@@ -306,7 +314,7 @@ if(command === "purge") {
     if(!member)
       return message.reply("Please mention a valid member of this server");
     if(!member.bannable) 
-      return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+      return message.reply("I cannot ban this usek! Do they have a higher role? Do I have ban permissions?");
 
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "No reason provided";
@@ -451,14 +459,14 @@ if(command === "userstats") {
       }
       
     } else {
-      message.channel.send("Include a user id/ping after r!userstats")
+      message.channel.send("Include a user id/ping after k!userstats")
 }}
 
 if (command === "massignrole") {
-  if(!message.member.roles.some(r=>["Defenestration Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
-  if(!role){
+  if(!Role){
     return message.reply("Please Specify the Right Role and User in the Right Format")
   }
   message.mentions.members.forEach(member => {
@@ -466,6 +474,21 @@ if (command === "massignrole") {
   });
 
   message.channel.send(`Added role ${Role.name} to ${message.mentions.members.map(member => member.user.tag).join(", ")}.`);
+  message.delete().catch(O_o=>{}); 
+}
+
+if (command === "massremoverole") {
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+      return message.reply("Sorry, you don't have permissions to use this!");
+  const Role = message.mentions.roles.first();
+  if(!Role){
+    return message.reply("Please Specify the Right Role and User in the Right Format")
+  }
+  message.mentions.members.forEach(member => {
+      member.removeRole(Role).catch(e => console.error(e));
+  });
+
+  message.channel.send(`Removed role ${Role.name} to ${message.mentions.members.map(member => member.user.tag).join(", ")}.`);
   message.delete().catch(O_o=>{}); 
 }
 
