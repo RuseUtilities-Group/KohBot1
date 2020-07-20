@@ -360,12 +360,12 @@ if(command === "roll") {
 if(command === "warn"){
   if(!message.member.roles.some(r=>["Defenestration Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
+
   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member){return message.channel.send("Please Specify a Member to Be Warned")}
-  let memberId = message.guild.members.get(args[0].slice(3, -1));
-  const member1 = message.mentions.members.size === 1 ? 
-        message.mentions.members.first() :
-        message.guild.members.cache.get(args[1]);
+
+  let memberId = message.mentions.members.first.toString().slice(3, -1)
+
   let reason = args.slice(1).join(' ');
   let server = message.guild.name;
     if(!reason){reason = "No reason provided"};
