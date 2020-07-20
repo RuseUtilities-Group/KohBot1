@@ -15,8 +15,8 @@ client.on('shardError', error => {
 client.login(config.token);
 
 client.on("ready", () => {
-  console.log(`RuseChat Bot V2 has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  client.user.setActivity(`Playing r!help`);
+  console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+  client.user.setActivity(`Playing k!help`);
 
 });
 
@@ -83,11 +83,6 @@ client.on('message', message => {
   if(message.content.toLowerCase().includes('trump')) { message.channel.send("Trump Gay, Vote Biden")}
 });
 
-client.on('message', message => {
-  if(message.author.bot) return;
-  if(message.content.toLowerCase().includes('abs')) { message.react('')}
-});
-
 client.on("message", async message => {
   if(message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
@@ -96,11 +91,11 @@ client.on("message", async message => {
 
 if(command === "help") {
     const helpEmbed = {
-        color: 0x175342,
+        color: 0x9932CC,
         title: 'RuseChat Bot V2 Help Prompt',
         description: 'Prefix: r!',
         thumbnail: {
-            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
         fields: [
             {
@@ -171,7 +166,15 @@ if(command === "help") {
               name: '\u200b',
               value: '\u200b',
               inline: false,
-          },
+          },{
+            name: 'Mass Role Assign: r!massignrole [@role] [@user] [@user1] [@user2]...',
+            value: 'Assigns the role to many people mentioned, Member needs mod or above to use this command.',
+        },
+        {
+            name: '\u200b',
+            value: '\u200b',
+            inline: false,
+        },
             {
                 name: 'Poll: r!poll [question]',
                 value: 'Creates a poll where the bot reacts with thumbs up and down.',
@@ -217,8 +220,8 @@ if(command === "help") {
       
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot V2 By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            text: 'KohBot by Joshua Koh',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
     
@@ -228,17 +231,17 @@ if(command === "help") {
 
   if(command === "invite") {
     const inviteEmbed = {
-        color: 0x175342,
+        color: 0x9932CC,
         title: 'RuseChat Bot V2 Invite Link',
         description: 'https://discord.com/api/oauth2/authorize?client_id=730004103719288904&permissions=2147483639&scope=bot',
         thumbnail: {
-            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
         
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot V2 By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            text: 'KohBot by Joshua Koh',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
     
@@ -251,7 +254,7 @@ if(command === "help") {
 if(command === "say") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    message.channel.send(sayMessage);
+    message.channel.send(`${sayMessage}`);
 
 }
 
@@ -339,7 +342,7 @@ if(command === "reactrole") {
   message.delete().catch(O_o=>{}); 
   let reactionMessage = `React to this Message to get the role **${roleMentioned}**:`
   const reactEmbed = {
-    color: 0x175342,
+    color: 0x9932CC,
     title: reactionMessage,
 };
 
@@ -383,7 +386,7 @@ if(command === "warn"){
     if(!reason){reason = "No reason provided"};
   
     const warnEmbed = {
-      color: 0x175342,
+      color: 0x9932CC,
       title: `Warn Log:`,
       thumbnail: {
         url: member.user.avatarURL
@@ -396,8 +399,8 @@ if(command === "warn"){
       ],
       timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot V2 By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            text: 'KohBot by Joshua Koh',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
     message.channel.send({ embed: warnEmbed });
@@ -416,7 +419,7 @@ if(command === "userstats") {
         message.guild.members.cache.get(args[1]);
       if(member) {
         const userEmbed = {
-          color: 0x175342,
+          color: 0x9932CC,
           title: `${member.username}`,
           thumbnail: {
             url: member.user.avatarURL
@@ -437,8 +440,8 @@ if(command === "userstats") {
           ],
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot V2 By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            text: 'KohBot by Joshua Koh',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
         }
         
@@ -451,36 +454,35 @@ if(command === "userstats") {
       message.channel.send("Include a user id/ping after r!userstats")
 }}
 
-if(command === "massroleadd"){
-  if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator", "Admin", "Administrator/Creator"].includes(r.name)) )
+if (command === "massignrole") {
+  if(!message.member.roles.some(r=>["Defenestration Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
-  var role = message.mentions.role.first();
-  var roleId = message.mentions.roles.first().id
-  message.mentions.members.first().addRole(roleId)
+  const Role = message.mentions.roles.first();
+  if(!role){
+    return message.reply("Please Specify the Right Role and User in the Right Format")
+  }
+  message.mentions.members.forEach(member => {
+      member.addRole(Role).catch(e => console.error(e));
+  });
 
-  if(!role) {
-    return message.channel.send("Wrong Input, Must Type a Valid Role After the Command!")
-  } 
-
-
-  message.channel.send(`Role Choosen: ${role}`)
-  message.channel.send(`Role Id: ${roleId}`)
+  message.channel.send(`Added role ${Role.name} to ${message.mentions.members.map(member => member.user.tag).join(", ")}.`);
+  message.delete().catch(O_o=>{}); 
 }
 
  //Game Commands
  if(command === "startSHgame") {
     const sgEmbed = {
-        color: 0x175342,
+        color: 0x9932CC,
         title: 'A Game of Secret Hitler Awaits You',
         description: 'Please type in the number of players (min 5, max 8) to start the game...',
         thumbnail: {
-            url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
         
         timestamp: new Date(),
         footer: {
-            text: 'RuseChat Bot V2 By RuseUtilities Group',
-            icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+            text: 'KohBot by Joshua Koh',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
     
@@ -534,7 +536,7 @@ if(command === "rdg") {
       winMessage = 'You and the Bot Tied!'
     }
     const rgEmbed = {
-      color: 0x175342,
+      color: 0x9932CC,
       title: `DRG Round ${num + 1} Results:`,
       thumbnail: {
           url: 'https://cdn.discordapp.com/attachments/694469683281395742/730759143161331803/Dice-6-6-1.png',
@@ -563,7 +565,7 @@ if(command === "rdg") {
   }
 
   const endEmbed = {
-    color: 0x175342,
+    color: 0x9932CC,
     title: 'Game Results:',
     description: `You won ${amountWins} out of ${num} games!`,
     thumbnail: {
@@ -572,8 +574,8 @@ if(command === "rdg") {
     
     timestamp: new Date(),
     footer: {
-        text: 'RuseChat Bot V2 By RuseUtilities Group',
-        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        text: 'KohBot by Joshua Koh',
+        icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
     },
   };
   message.channel.send({ embed: endEmbed });
@@ -607,7 +609,7 @@ if(command === "guessnum") {
 
 
   const displayMessageEmbed = {
-    color: 0x175342,
+    color: 0x9932CC,
     title: `I am Thinking of a Number Between 1 and ${maxNum}`,
     description: `You have 3 Chances (5 secs each) to guess the number, Type your guess in chat...`,
     thumbnail: {
@@ -616,8 +618,8 @@ if(command === "guessnum") {
     
     timestamp: new Date(),
     footer: {
-        text: 'RuseChat Bot V2 By RuseUtilities Group',
-        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        text: 'KohBot by Joshua Koh',
+        icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
     },
   };
 
@@ -625,7 +627,7 @@ if(command === "guessnum") {
 
 
   const correctMessageEmbed = {
-    color: 0x175342,
+    color: 0x9932CC,
     title: `Correct Answer`,
     description: `You won on guess number ${count}`,
     thumbnail: {
@@ -634,13 +636,13 @@ if(command === "guessnum") {
     
     timestamp: new Date(),
     footer: {
-        text: 'RuseChat Bot V2 By RuseUtilities Group',
-        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        text: 'KohBot by Joshua Koh',
+        icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
     },
   };
 
   const loseMessageEmbed = {
-    color: 0x175342,
+    color: 0x9932CC,
     title: `You Lost!`,
     description: `The number I was thinking of was ${numThinkingOf}`,
     thumbnail: {
@@ -649,8 +651,8 @@ if(command === "guessnum") {
     
     timestamp: new Date(),
     footer: {
-        text: 'RuseChat Bot V2 By RuseUtilities Group',
-        icon_url: 'https://cdn.discordapp.com/attachments/694469683281395742/730046707345391716/ruselogo.png',
+        text: 'KohBot by Joshua Koh',
+        icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
     },
   };
 
