@@ -163,7 +163,15 @@ if(command === "help") {
                 name: '\u200b',
                 value: '\u200b',
                 inline: false,
-            },
+            },{
+              name: 'Warn: r!warn [@user] [reason]',
+              value: 'Warns specified user. Both User should have Administrator or Moderator roles to do so',
+          },
+          {
+              name: '\u200b',
+              value: '\u200b',
+              inline: false,
+          },
             {
                 name: 'Poll: r!poll [question]',
                 value: 'Creates a poll where the bot reacts with thumbs up and down.',
@@ -361,11 +369,15 @@ if(command === "warn"){
   if(!message.member.roles.some(r=>["Defenestration Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
 
+  let moderator = message.member.user
   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member){return message.channel.send("Please Specify a Member to Be Warned")}
 
-  let memberId = message.mentions.members.first.toString().slice(3, -1)
-
+  let memberId = message.mentions.members.first().id
+  let nickname = member.nickname
+  if(!nickname){
+    nickname = member.displayName
+  }
   let reason = args.slice(1).join(' ');
   let server = message.guild.name;
     if(!reason){reason = "No reason provided"};
@@ -378,8 +390,8 @@ if(command === "warn"){
       },
       fields: [
         {
-        name: `Username: ${member.user.username}`,
-        value: `Warn Reason: ${reason}`
+        name: `Warned User: @${nickname}`,
+        value: `Warn Reason: ${reason}\n User Id: ${memberId}\n Moderator: ${moderator}\n Server: ${server}`
         },
       ],
       timestamp: new Date(),
@@ -390,7 +402,7 @@ if(command === "warn"){
     };
     message.channel.send({ embed: warnEmbed });
     client.users.get(memberId).send(`You have been warned in ${server} for ${reason}`);
-
+    message.delete().catch(O_o=>{}); 
 };
 
 if(command === "userstats") {
@@ -684,8 +696,7 @@ client.on("message", message => {
     "fx5WJZuGA0I",
     "9r0Xe7ESrBE",
     "2CG6nFV",
-    "eat my ass",
-    "i'm back"
+    "eat my ass"
   ];
 
   for(num in delphineYTvids){
