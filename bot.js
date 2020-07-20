@@ -452,18 +452,19 @@ if(command === "userstats") {
 }}
 
 if(command === "massroleadd"){
-  //if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
-      //return message.reply("Sorry, you don't have permissions to use this!");
-  var role = message.content.split(' ');
+  if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator", "Admin", "Administrator/Creator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+  var role = message.mentions.role.first();
+  var roleId = message.mentions.roles.first().id
+  message.mentions.members.first().addRole(roleId)
 
-  if(role) {
-    role = role.slice(3, -1);
-  }else{
+  if(!role) {
     return message.channel.send("Wrong Input, Must Type a Valid Role After the Command!")
-  }
+  } 
 
-  message.channel.send(role)
-  message.channel.send("Type in all of the members who you want to assign the role to one by one, message by message. When Done say done.")
+
+  message.channel.send(`Role Choosen: ${role}`)
+  message.channel.send(`Role Id: ${roleId}`)
 }
 
  //Game Commands
@@ -695,14 +696,13 @@ client.on("message", message => {
     "A_D9mR8bTI8",
     "fx5WJZuGA0I",
     "9r0Xe7ESrBE",
-    "2CG6nFV",
-    "eat my ass"
+    "2CG6nFV"
   ];
 
   for(num in delphineYTvids){
     if(message.content.includes(delphineYTvids[num])){
       message.delete();
-      message.channel.send("A message containg a Belle Delphine Youtube Links or illegal words has been detected and deleted!")
+      message.channel.send("A message containg a Belle Delphine Youtube Links has been detected and deleted!")
   };
   };
 });
