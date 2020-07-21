@@ -1,6 +1,9 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json");
+const config = { 
+  "token"  : "NzMwMDA0MTAzNzE5Mjg4OTA0.XwR10w.LHVIQTckA4TeLHM8KOWMzvxJy9Y",
+  "prefix" : "k!"
+}
 const ytdl = require('ytdl-core');
 
 
