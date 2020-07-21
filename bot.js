@@ -48,12 +48,6 @@ client.on('message', (receivedMessage) => {
     }
 });
 
-client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(ch => ch.name === 'announcements');
-    if (!channel) return;
-    channel.send(`Welcome ${member} to the Server!`);
-  });
-
 client.on('message', message => {
 	if (message.content === 'k!play') {
 		if (message.channel.type !== 'text') return;
@@ -72,6 +66,24 @@ client.on('message', message => {
 		});
 	}
 });
+
+//Ruse-High Link
+client.on('message', message => {
+  if(message.author.bot) return;
+  if(message.channel.id === "735085499571765288"){
+      var messageContent = message.content;
+      client.channels.get('735084968476278805').send(`A Ruse Kid Said: ${messageContent}`);
+  }
+});
+
+client.on('message', message => {
+  if(message.author.bot) return;
+  if(message.channel.id === "735084968476278805"){
+    var messageContent = message.content;
+    client.channels.get('735085499571765288').send(`A High Kid Said: ${messageContent}`)
+  }
+});
+
 //  console.log(message.mentions); Shows every single message
 client.on('message', message => {
   if(message.author.bot) return;
@@ -175,7 +187,7 @@ if(command === "help") {
             value: '\u200b',
             inline: false,
         },{
-        name: 'Mass Role Removal: k!massremovalrole [@role] [@user] [@user1] [@user2]...',
+        name: 'Mass Role Removal: k!massremoverole [@role] [@user] [@user1] [@user2]...',
         value: 'Removes the role to many people mentioned, Member needs mod or above to use this command.',
     },
     {
@@ -276,7 +288,7 @@ if(command === "ping") {
 
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
@@ -289,7 +301,7 @@ if(command === "purge") {
 
 
    if(command === "kick") {
-    if(!message.member.roles.some(r=>["Defenestration Administration", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
@@ -307,7 +319,7 @@ if(command === "purge") {
 
   
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Defenestration Administration"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -377,7 +389,7 @@ if(command === "roll") {
 }
 
 if(command === "warn"){
-  if(!message.member.roles.some(r=>["Defenestration Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
 
   let moderator = message.member.user
@@ -463,7 +475,7 @@ if(command === "userstats") {
 }}
 
 if (command === "massignrole") {
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
   if(!Role){
@@ -478,7 +490,7 @@ if (command === "massignrole") {
 }
 
 if (command === "massremoverole") {
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
   if(!Role){
