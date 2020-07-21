@@ -13,13 +13,13 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/synicalsyntax/discord.js-heroku.git"
+      "url": "git+"
     },
     "keywords": [
       "heroku",
       "discord.js"
     ],
-    "author": "synicalsyntax",
+    "author": "Joshua Koh",
     "license": "Apache 2.0",
     "dependencies": {
       "discord.js": "^11.3.0"
