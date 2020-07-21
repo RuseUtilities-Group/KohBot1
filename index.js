@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json")
 const ytdl = require('ytdl-core');
+const token =process.env.token;
 
 
 process.on('unhandledRejection', error => {
@@ -12,7 +13,7 @@ client.on('shardError', error => {
     console.error('A websocket connection encountered an error:', error);
 });
 
-client.login(config.token);
+client.login(token);
 
 client.on("ready", () => {
   console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
