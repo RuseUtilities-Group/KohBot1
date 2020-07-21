@@ -1,11 +1,10 @@
 {
     "name": "kohbot1",
     "version": "1.0.0",
-    "description": "Discordd Bot for Koh",
+    "description": "Discord Bot for Koh",
     "main": "index.js",
     "engines": {
-      "node": "8.x",
-      "npm": "*"
+      "node": "8.x"
     },
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +12,7 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+"
+      "url": "git+https://github.com/RuseUtilities-Group/RuseChat-Bot-V2"
     },
     "keywords": [
       "heroku",
