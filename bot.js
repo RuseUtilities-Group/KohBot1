@@ -467,8 +467,8 @@ if (command === "massignrole") {
       return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
   if(!Role){
-    return message.reply("Please Specify the Right Role and User in the Right Format")
-  }
+    return message.reply("Please Specify the Right Role and User in the Right Format");
+  };
   message.mentions.members.forEach(member => {
       member.addRole(Role).catch(e => console.error(e));
   });
