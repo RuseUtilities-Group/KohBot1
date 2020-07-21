@@ -75,7 +75,7 @@ client.on('message', message => {
 client.on('message', message => {
   if(message.author.bot) return;
   if(message.content.toLowerCase().includes('trump')) { message.channel.send("Trump Gay, Vote Biden")}
-});
+}); 
 
 client.on("message", async message => {
   if(message.author.bot) return;
