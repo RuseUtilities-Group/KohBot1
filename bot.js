@@ -52,17 +52,19 @@ client.on('message', (receivedMessage) => {
 //Ruse-High Link
 client.on('message', message => {
   if(message.author.bot) return;
+  var sendingUser = message.author.username
   if(message.channel.id === "735085499571765288"){
       var messageContent = message.content;
-      client.channels.get('735084968476278805').send(`A Ruse Kid Said: ${messageContent}`);
+      client.channels.get('735084968476278805').send(`${sendingUser} (Ruse): ${messageContent}`);
   }
 });
 
 client.on('message', message => {
   if(message.author.bot) return;
+  var sendingUser = message.author.username
   if(message.channel.id === "735084968476278805"){
     var messageContent = message.content;
-    client.channels.get('735085499571765288').send(`A High Kid Said: ${messageContent}`)
+    client.channels.get('735085499571765288').send(`${sendingUser} (High): ${messageContent}`)
   }
 });
 
