@@ -66,6 +66,9 @@ client.on('message', message => {
   let guild = message.guild;
   let member = guild.member(message.author);
   let nickname = member ? member.displayName : null;
+  if(messsage.author === "735428948430946325"){
+    nickname = "annonymous"
+  }
   if(message.channel.id === "735084968476278805"){
     var messageContent = message.content;
     client.channels.get('735085499571765288').send(`${nickname} (High): ${messageContent}`)
