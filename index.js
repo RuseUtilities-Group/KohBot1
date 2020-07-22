@@ -519,7 +519,6 @@ if(command === "rdg") {
     gaNum = 1
   }
 
-  
   while(num !== gaNum) {
 
     var dice1 = {
