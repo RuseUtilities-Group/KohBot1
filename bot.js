@@ -52,19 +52,23 @@ client.on('message', (receivedMessage) => {
 //Ruse-High Link
 client.on('message', message => {
   if(message.author.bot) return;
-  var sendingUser = message.author.nickname
+  let guild = message.guild;
+  let member = guild.member(message.author);
+  let nickname = member ? member.displayName : null;
   if(message.channel.id === "735085499571765288"){
       var messageContent = message.content;
-      client.channels.get('735084968476278805').send(`${sendingUser} (Ruse): ${messageContent}`);
+      client.channels.get('735084968476278805').send(`${nickname} (Ruse): ${messageContent}`);
   }
 });
 
 client.on('message', message => {
   if(message.author.bot) return;
-  var sendingUser = message.author.nickname
+  let guild = message.guild;
+  let member = guild.member(message.author);
+  let nickname = member ? member.displayName : null;
   if(message.channel.id === "735084968476278805"){
     var messageContent = message.content;
-    client.channels.get('735085499571765288').send(`${sendingUser} (High): ${messageContent}`)
+    client.channels.get('735085499571765288').send(`${nickname} (High): ${messageContent}`)
   }
 });
 
