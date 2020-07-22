@@ -55,10 +55,9 @@ client.on('message', message => {
   let guild = message.guild;
   let member = guild.member(message.author);
   let nickname = member ? member.displayName : null;
-  let tag = message.author.tag
   if(message.channel.id === "735085499571765288"){
       var messageContent = message.content;
-      client.channels.get('735084968476278805').send(`${nickname}${tag} (Ruse): ${messageContent}`);
+      client.channels.get('735084968476278805').send(`${nickname} (Ruse): ${messageContent}`);
   }
 });
 
@@ -67,10 +66,9 @@ client.on('message', message => {
   let guild = message.guild;
   let member = guild.member(message.author);
   let nickname = member ? member.displayName : null;
-  let tag = message.author.tag
   if(message.channel.id === "735084968476278805"){
     var messageContent = message.content;
-    client.channels.get('735085499571765288').send(`${nickname}${tag} (High): ${messageContent}`)
+    client.channels.get('735085499571765288').send(`${nickname} (High): ${messageContent}`)
   }
 });
 
