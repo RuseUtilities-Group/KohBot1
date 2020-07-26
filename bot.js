@@ -274,7 +274,7 @@ if(command === "ping") {
 
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Mini Mod", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
     if(!deleteCount || deleteCount < 2 || deleteCount > 10000)
@@ -287,7 +287,7 @@ if(command === "purge") {
 
 
    if(command === "kick") {
-    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Mini Mod", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
@@ -305,7 +305,7 @@ if(command === "purge") {
 
   
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Mini Mod", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -375,7 +375,7 @@ if(command === "roll") {
 }
 
 if(command === "warn"){
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Mini Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
 
   let moderator = message.member.user
@@ -461,7 +461,7 @@ if(command === "userstats") {
 }}
 
 if (command === "massignrole") {
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Mini Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
   if(!Role){
@@ -476,7 +476,7 @@ if (command === "massignrole") {
 }
 
 if (command === "massremoverole") {
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Little Warn Man", "Mod", "Moderator"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Mini Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
   if(!Role){
