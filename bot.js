@@ -4,6 +4,11 @@ const config = require("./config.json")
 const token = process.env.token;
 
 
+
+
+
+
+//Error Handler
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
 });
@@ -12,8 +17,14 @@ client.on('shardError', error => {
     console.error('A websocket connection encountered an error:', error);
 });
 
+
+//Client Login
 client.login(token);
 
+
+
+
+//Terminal User Interface
 client.on("ready", () => {
   console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   client.user.setActivity(`Playing k!help`);
@@ -39,6 +50,13 @@ client.on("guildDelete", guild => {
   client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
+
+
+
+
+
+
+
 client.on('message', (receivedMessage) => {
     if (receivedMessage.author == client.user) {
         return
@@ -47,6 +65,15 @@ client.on('message', (receivedMessage) => {
         receivedMessage.channel.send("Hi There!")
     }
 });
+
+
+
+
+
+
+
+
+
 
 
 //Ruse-High Link
@@ -72,22 +99,37 @@ client.on('message', message => {
   }
 });
 
+
+
+
+
+
+
+
+
 //  console.log(message.mentions); Shows every single message
-client.on('message', message => {
-  if(message.author.bot) return;
-  if(message.content.toLowerCase().startsWith('pog')) { message.channel.send("https://cdn.discordapp.com/emojis/710485634665545809.png?v=1")}
-});
+
+
 
 client.on('message', message => {
   if(message.author.bot) return;
   if(message.content.toLowerCase().includes('trump')) { message.channel.send("Trump Gay, Vote Biden")}
 }); 
 
+
+
+
 client.on("message", async message => {
   if(message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
+
+
+
+
+
+
 
 if(command === "help") {
     const helpEmbed = {
@@ -237,6 +279,19 @@ if(command === "help") {
     
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   if(command === "invite") {
     const inviteEmbed = {
         color: 0x9932CC,
@@ -257,6 +312,17 @@ if(command === "help") {
     
   }
 
+
+
+
+
+
+
+
+
+
+
+
 //moderation commands
 
 if(command === "say") {
@@ -267,10 +333,34 @@ if(command === "say") {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 if(command === "ping") {
     const m = await message.channel.send("Ping!");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if(command === "purge") {
@@ -283,6 +373,20 @@ if(command === "purge") {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -303,7 +407,21 @@ if(command === "purge") {
   }
 
 
+
   
+
+
+
+
+
+
+
+
+
+
+
+
+
   if(command === "ban") {
     if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
@@ -321,6 +439,19 @@ if(command === "purge") {
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   if(command === "poll") {
     const sayMessage = args.join(" ");
@@ -330,6 +461,22 @@ if(command === "purge") {
         messageReaction.react('👎'); 
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(command === "reactrole") {
   const roleMentioned = args.join(" ");
@@ -358,6 +505,25 @@ message.channel.send({ embed: reactEmbed }).then(messageReaction =>{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if(command === "roll") {
   const sidesCount = parseInt(args[0], 10);
   if(!sidesCount || sidesCount < 2)
@@ -373,6 +539,23 @@ if(command === "roll") {
     message.channel.send(result)
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(command === "warn"){
   if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
@@ -412,6 +595,23 @@ if(command === "warn"){
     message.channel.send({ embed: warnEmbed });
     client.users.get(memberId).send(`You have been warned in ${server} for ${reason}`);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(command === "userstats") {
   const args = message.content.split(' ');
@@ -459,6 +659,24 @@ if(command === "userstats") {
       message.channel.send("Include a user id/ping after k!userstats")
 }}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if (command === "massignrole") {
   if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
@@ -474,6 +692,9 @@ if (command === "massignrole") {
   message.delete().catch(O_o=>{}); 
 }
 
+
+
+
 if (command === "massremoverole") {
   if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
@@ -488,6 +709,23 @@ if (command === "massremoverole") {
   message.channel.send(`Removed role ${Role.name} to ${message.mentions.members.map(member => member.user.tag).join(", ")}.`);
   message.delete().catch(O_o=>{}); 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  //Game Commands
  if(command === "startSHgame") {
@@ -509,6 +747,22 @@ if (command === "massremoverole") {
     message.channel.send({ embed: sgEmbed });
     
   } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(command === "rdg") {
   var num = 0
@@ -600,6 +854,19 @@ if(command === "rdg") {
   message.channel.send({ embed: endEmbed });
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(command === "guessnum") {
 
@@ -704,6 +971,20 @@ if(command === "guessnum") {
 
 
 }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Delphine Blocker
 client.on("message", message => {
