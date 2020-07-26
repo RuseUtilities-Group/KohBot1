@@ -411,7 +411,6 @@ if(command === "warn"){
     };
     message.channel.send({ embed: warnEmbed });
     client.users.get(memberId).send(`You have been warned in ${server} for ${reason}`);
-    message.delete().catch(O_o=>{}); 
 };
 
 if(command === "userstats") {
