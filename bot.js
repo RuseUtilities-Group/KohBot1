@@ -32,7 +32,7 @@ client.on("ready", () => {
 });
 
 client.on('ready', () => {
-    // List sxervers the bot is connected to
+    // List servers the bot is connected to
     console.log("Servers:")
     client.guilds.forEach((guild) => {
         console.log(" - " + guild.name)
