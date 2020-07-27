@@ -1,0 +1,20 @@
+{
+    "warnedUser": {
+        "testUser":{
+            "Warn 1": {
+                "Reason": "No Reason Provided",
+                "Moderator": "modTestUser",
+                "Date": "18:59 29/02/2020"
+            }
+        },
+        
+        "testUser2": {
+            "Warn 1": {
+                "Reason": "No Reason Provided",
+                "Moderator": "modTestUser2",
+                "Date": "19:00 29/02/2020"
+            }
+        }
+
+    }
+}
