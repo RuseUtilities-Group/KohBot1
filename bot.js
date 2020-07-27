@@ -566,10 +566,7 @@ if(command === "warn"){
     if(!member){return message.channel.send("Please Specify a Member to Be Warned")}
 
   let memberId = message.mentions.members.first().id
-  let nickname = member.nickname
-  if(!nickname){
-    nickname = member.displayName
-  }
+  let nickname = member ? member.displayName : null;
   let reason = args.slice(1).join(' ');
   let server = message.guild.name;
     if(!reason){reason = "No reason provided"};
