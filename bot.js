@@ -1015,7 +1015,7 @@ client.on("message", message => {
 const greetings = [
   "hi",
   "hello",
-  "yo"
+  "sup"
 ]
 client.on("message", message => {
   if(message.author.bot) return;
