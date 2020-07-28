@@ -1011,11 +1011,22 @@ client.on("message", message => {
 
 
 
-
+//Dictionaries
+const greetings = [
+  "hi",
+  "hello",
+  "yo"
+]
 client.on("message", message => {
   if(message.channel.id === "737646390662004748"){
-    return
+    return;
   }
-  var message = message.content
-  
+  var messageText = message.content.toLowerCase();
+
+
+  for(num in greetings){
+    if(messageText.includes(greetings[num])){
+      message.channel.send(`Hi There, ${message.author}!`);
+    }
+  };
 });
