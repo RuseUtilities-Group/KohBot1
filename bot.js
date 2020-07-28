@@ -1021,7 +1021,8 @@ const greetings = [
 const greetingresponse = [
   "Whats on your mind?",
   "Hows it going?",
-  "Hows your day been?"
+  "Hows your day been?",
+  "Whats brewing?"
 ]
 client.on("message", message => {
   if(message.author.bot) return;
