@@ -1013,6 +1013,9 @@ client.on("message", message => {
 
 
 client.on("message", message => {
-
-
+  if(message.channel.id === "737646390662004748"){
+    return
+  }
+  var message = message.content
+  
 });
