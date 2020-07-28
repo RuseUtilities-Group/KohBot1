@@ -1025,7 +1025,7 @@ const greetingresponse = [
 ]
 client.on("message", message => {
   if(message.author.bot) return;
-  if(message.channel.id !== "737646390662004748"){
+  if(message.channel.id !== "688568369636442116"){
     return;
   }
   var messageText = message.content.toLowerCase();
