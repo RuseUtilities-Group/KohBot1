@@ -1039,7 +1039,7 @@ client.on("message", message => {
           return randomNumber;
         }
       }
-      var response = rng.roll
+      var response = parseInt(rng.roll)
       response = greetingresponse[rng.roll]
       message.channel.send(`Hi There, ${message.author}! ${response}`);
     }
