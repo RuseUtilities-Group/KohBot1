@@ -1009,7 +1009,9 @@ client.on("message", message => {
 
 
 
-
+function rng(num){
+  return Math.floor (Math.random() * (num - 1 + 1)) + 1;
+}
 
 //Dictionaries
 const greetings = [
@@ -1033,14 +1035,7 @@ client.on("message", message => {
 
   for(num in greetings){
     if(messageText.includes(greetings[num])){
-      const rng = {
-        sides: 4,
-        roll: function () {
-          var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-          return randomNumber;
-        }
-      }
-      var response = parseInt(rng.roll())
+      var response = rng(4)
       response = greetingresponse[response]
       message.channel.send(`Hi There, ${message.author}! ${response}`);
     }
