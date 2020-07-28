@@ -1021,6 +1021,7 @@ const greetings = [
 ]
 
 const greetingresponse = [
+  '',
   "Whats on your mind?",
   "Hows it going?",
   "Hows your day been?",
