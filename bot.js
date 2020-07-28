@@ -1017,6 +1017,12 @@ const greetings = [
   "hello",
   "sup"
 ]
+
+const greetingresponse = [
+  "Whats on your mind?",
+  "Hows it going?",
+  "Hows your day been?"
+]
 client.on("message", message => {
   if(message.author.bot) return;
   if(message.channel.id !== "737646390662004748"){
@@ -1024,10 +1030,18 @@ client.on("message", message => {
   }
   var messageText = message.content.toLowerCase();
 
-
   for(num in greetings){
     if(messageText.includes(greetings[num])){
-      message.channel.send(`Hi There, ${message.author}!`);
+      const rng = {
+        sides: 4,
+        roll: function () {
+          var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+          return randomNumber;
+        }
+      }
+      var response = rng.roll
+      response = greetingresponse[rng.roll]
+      message.channel.send(`Hi There, ${message.author}! ${response}`);
     }
   };
 });
