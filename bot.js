@@ -1052,7 +1052,7 @@ client.on("message", message => {
     message.reply("Heres the google link:" + search)
   };
 
-  if(messageText.includes("roll a dice")){
+  //if(messageText.includes("roll a dice")){
     var dice = {
       sides: 6,
       roll: function () {
@@ -1061,6 +1061,6 @@ client.on("message", message => {
       }
     }
     var result = dice.roll();
-    message.channel.reply("A" + result + "was rolled!")
-  }
+//    message.channel.reply("A" + result + "was rolled!")
+//  }
 });
