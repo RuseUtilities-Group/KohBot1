@@ -1015,9 +1015,9 @@ function rng(num){
 
 //Dictionaries
 const greetings = [
-  "\bhi\B",
-  "\bhello\B",
-  "\bsup\B"
+  "\bhi",
+  "\bhello",
+  "\bsup"
 ]
 
 const greetingresponse = [
