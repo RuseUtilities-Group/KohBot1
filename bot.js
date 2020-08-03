@@ -1030,7 +1030,6 @@ const greetingresponse = [
   "Whats brewing?"
 ]
 client.on("message", message => {
-  const args = message.content.slice(1).trim().split(/ +/g);
   if(message.author.bot) return;
   //if(message.channel.id !== "688568369636442116"){
   //  return;
@@ -1047,6 +1046,7 @@ client.on("message", message => {
 
   if(messageText.startsWith("|search")){
     var googlePrefix = "https://www.google.com/search?-b-d&q="
+    const args = message.content.slice(7).trim().split(/ +/g);
     const gameAmounts = args.join("+");
     var search = googlePrefix + gameAmounts
     message.reply("Heres the google link:" + search)
