@@ -1042,12 +1042,12 @@ client.on("message", message => {
       response = greetingresponse[response]
       message.channel.send(`Hi There, ${message.author}! ${response}`);
     }
+  }
 
-  if(messageText.startsWith("|search"){
+  if(messageText.startsWith("|search")){
     var googlePrefix = "https://www.google.com/search?-b-d&q="
     const gameAmounts = args.join("+");
     var search = googlePrefix + gameAmounts
     message.reply("Heres the google link:" + search)
-  };
   };
 });
