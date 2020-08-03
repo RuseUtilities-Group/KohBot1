@@ -1030,6 +1030,7 @@ const greetingresponse = [
   "Whats brewing?"
 ]
 client.on("message", message => {
+  const args = message.content.slice(1).trim().split(/ +/g);
   if(message.author.bot) return;
   //if(message.channel.id !== "688568369636442116"){
   //  return;
