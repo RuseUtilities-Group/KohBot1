@@ -1015,9 +1015,9 @@ function rng(num){
 
 //Dictionaries
 const greetings = [
-  "\bhi",
-  "\bhello",
-  "\bsup"
+  "|hi",
+  "|hello",
+  "|sup"
 ]
 
 const greetingresponse = [
@@ -1029,9 +1029,9 @@ const greetingresponse = [
 ]
 client.on("message", message => {
   if(message.author.bot) return;
-  if(message.channel.id !== "688568369636442116"){
-    return;
-  }
+  //if(message.channel.id !== "688568369636442116"){
+  //  return;
+  //}
   var messageText = message.content.toLowerCase();
 
   for(num in greetings){
