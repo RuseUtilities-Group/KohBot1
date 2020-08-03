@@ -1017,7 +1017,9 @@ function rng(num){
 const greetings = [
   "|hi",
   "|hello",
-  "|sup"
+  "|sup",
+  "|hey",
+  "|yo"
 ]
 
 const greetingresponse = [
