@@ -1051,4 +1051,16 @@ client.on("message", message => {
     var search = googlePrefix + gameAmounts
     message.reply("Heres the google link:" + search)
   };
+
+  if(messageText.includes("roll a dice")){
+    var dice = {
+      sides: 6,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result = dice.roll();
+    message.channel.reply("A" + result + "was rolled!")
+  }
 });
