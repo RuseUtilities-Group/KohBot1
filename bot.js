@@ -619,10 +619,11 @@ if(command === "userstats") {
       const member = message.mentions.members.size === 1 ? 
         message.mentions.members.first() :
         message.guild.members.cache.get(args[1]);
+        let nickname = member ? member.displayName : null;
       if(member) {
         const userEmbed = {
           color: 0x9932CC,
-          title: `${member.username}`,
+          title: `${nickname}`,
           thumbnail: {
             url: member.user.avatarURL
           },
