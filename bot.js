@@ -998,7 +998,9 @@ client.on("message", message => {
     "9r0Xe7ESrBE",
     "2CG6nFV"
   ];
-
+  if(message.content.includes("https://www.kronos.com.au/products/time-and-attendance")){
+      message.delete();
+  };
   for(num in delphineYTvids){
     if(message.content.includes(delphineYTvids[num])){
       message.delete();
@@ -1006,7 +1008,6 @@ client.on("message", message => {
   };
   };
 });
-
 
 
 
