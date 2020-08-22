@@ -83,6 +83,7 @@ client.on('message', message => {
   let member = guild.member(message.author);
   let nickname = member ? member.displayName : null;
   if(message.channel.id === "735085499571765288"){
+    if(message.author.id() === "258542471015825410") return;
       var messageContent = message.content;
       client.channels.get('735084968476278805').send(`${nickname} (Ruse): ${messageContent}`);
   }
