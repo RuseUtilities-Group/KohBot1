@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json")
 const token = process.env.token;
-
+var fs = require("fs");
 
 
 
@@ -853,6 +853,27 @@ if(command === "rdg") {
   message.channel.send({ embed: endEmbed });
 
 }
+
+
+if(command === "skribblprint"){
+  fs.readFile("skribblDictionary.txt", function(err, buf) {
+    message.channel.send(buf.toString());
+  });
+};
+
+
+if(command === "skribbladd"){
+  var data = "New File Contents";
+
+fs.writeFile("temp.txt", data, (err) => {
+  if (err) console.log(err);
+  console.log("Successfully Written to File.");
+});
+
+}
+
+
+
 
 
 
