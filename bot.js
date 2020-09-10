@@ -559,7 +559,7 @@ if(command === "roll") {
 
 
 if(command === "warn"){
-  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "selling wraith prism for $40"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Presidium of the Politburo 🇰🇵", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Harry Liang"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
 
   let moderator = message.member.user
