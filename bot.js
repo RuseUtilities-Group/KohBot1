@@ -84,7 +84,7 @@ client.on('message', message => {
   let nickname = member ? member.displayName : null;
   if(message.channel.id === "757159759160803358"){
       var messageContent = message.content;
-      client.channels.get('735084968476278805').send(`${nickname} (Ruse): ${messageContent}`);
+      client.channels.get('757166778765017179').send(`${nickname} (Ruse): ${messageContent}`);
   }
 });
 
@@ -95,7 +95,7 @@ client.on('message', message => {
   let nickname = member ? member.displayName : null;
   if(message.channel.id === "735084968476278805"){
     var messageContent = message.content;
-    client.channels.get('757159759160803358').send(`${nickname} (High): ${messageContent}`)
+    client.channels.get('757166778765017179').send(`${nickname} (High): ${messageContent}`)
   }
 });
 
