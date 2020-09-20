@@ -82,8 +82,7 @@ client.on('message', message => {
   let guild = message.guild;
   let member = guild.member(message.author);
   let nickname = member ? member.displayName : null;
-  if(message.channel.id === "735085499571765288"){
-    if(message.author.id() === "258542471015825410") return;
+  if(message.channel.id === "757159759160803358"){
       var messageContent = message.content;
       client.channels.get('735084968476278805').send(`${nickname} (Ruse): ${messageContent}`);
   }
@@ -96,7 +95,7 @@ client.on('message', message => {
   let nickname = member ? member.displayName : null;
   if(message.channel.id === "735084968476278805"){
     var messageContent = message.content;
-    client.channels.get('735085499571765288').send(`${nickname} (High): ${messageContent}`)
+    client.channels.get('757159759160803358').send(`${nickname} (High): ${messageContent}`)
   }
 });
 
