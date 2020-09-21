@@ -423,7 +423,7 @@ if(command === "purge") {
 
 
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -441,7 +441,16 @@ if(command === "purge") {
   }
 
 
-
+  if(command === "whoopsie"){
+    let userID = args[0]
+      msg.guild.fetchBans().then(bans=> {
+      if(bans.size == 0) return 
+      let bUser = bans.find(b => b.user.id == userID)
+      if(!bUser) return
+      msg.guild.members.unban(bUser.user)
+})
+    
+  ;}
 
 
 
