@@ -443,14 +443,9 @@ if(command === "purge") {
 
   if(command === "whoopsie"){
     let userID = args[0]
-      msg.guild.fetchBans().then(bans=> {
-      if(bans.size == 0) return 
-      let bUser = bans.find(b => b.user.id == userID)
-      if(!bUser) return
-      msg.guild.members.unban(bUser.user)
-})
-    
-  ;}
+    guild.members.unban(userID)
+    message.channel.send(`Unbanned ${user.username} from ${guild.name}`)
+}
 
 
 
