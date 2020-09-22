@@ -992,7 +992,7 @@ if(command === "guessnum") {
   }
             })
             .catch(() => {
-              message.channel.send('Too Late!');
+              message.channel.send('Too late!');
             });
           });
 
@@ -1001,7 +1001,7 @@ if(command === "guessnum") {
         count++
     }
   }
-  var intervalFunct = messageHandle
+  var intervalFunct = setInterval(messageHandle, 5000 );
 }
 
 
