@@ -979,9 +979,10 @@ if(command === "guessnum") {
           message.channel.awaitMessages(filter, { time: 60000, max: 1, errors: ['time'] })
             .then(messages => {
               let guessedNum = messages.first().content;
-              if(guessedNum === numThinkingOf) {
+        if(guessedNum === numThinkingOf) {
           message.channel.send({ embed: correctMessageEmbed });
           count = 3
+          return
         }else if(guessedNum > numThinkingOf){
           message.channel.send(`The number is LOWER, Try again... You have ${maxCount - count} try(s) left`)
         }else if(guessedNum < numThinkingOf){
@@ -991,7 +992,7 @@ if(command === "guessnum") {
   }
             })
             .catch(() => {
-              message.channel.send('You did not enter any input!');
+              message.channel.send('Too Late!');
             });
           });
 
@@ -1000,7 +1001,7 @@ if(command === "guessnum") {
         count++
     }
   }
-  var intervalFunct = setInterval(messageHandle, 5000 );
+  var intervalFunct = messageHandle
 }
 
 
