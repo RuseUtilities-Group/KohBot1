@@ -604,7 +604,7 @@ if(command === "warn"){
 if (command === "mute") {
   if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
-  const role = <guild>.roles.cache.find(role => role.name === 'Muted');
+  const role = guild.roles.cache.find(role => role.name === 'Muted');
   let member = message.mentions.members
   if(!member) return message.channel.send("Please specify member to be warned.")
   member.addRole(role);
@@ -616,7 +616,7 @@ if (command === "mute") {
 if (command === "unmute") {
   if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
-  const role = <guild>.roles.cache.find(role => role.name === 'Muted');
+  const role = guild.roles.cache.find(role => role.name === 'Muted');
   let member = message.mentions.members
   if(!member) return message.channel.send("Please specify member to be warned.")
   member.removeRole(role);
@@ -973,10 +973,10 @@ if(command === "guessnum") {
         if(count === 4){
           message.channel.send({ embed: loseMessageEmbed });
         }
-        <message>.channel.send('Please enter more input.').then(() => {
-          const filter = m => <message>.author.id === m.author.id;
+        message.channel.send('Please enter more input.').then(() => {
+          const filter = m => message.author.id === m.author.id;
 
-          <message>.channel.awaitMessages(filter, { time: 60000, max: 1, errors: ['time'] })
+          message.channel.awaitMessages(filter, { time: 60000, max: 1, errors: ['time'] })
             .then(messages => {
               let guessedNum = messages.first().content;
               if(guessedNum === numThinkingOf) {
@@ -991,7 +991,7 @@ if(command === "guessnum") {
   }
             })
             .catch(() => {
-              <message>.channel.send('You did not enter any input!');
+              message.channel.send('You did not enter any input!');
             });
           });
 
