@@ -973,7 +973,7 @@ if(command === "guessnum") {
         if(count === 4){
           message.channel.send({ embed: loseMessageEmbed });
         }
-        message.channel.send('Please enter more input.').then(() => {
+        message.channel.send('Guess A New Number:').then(() => {
           const filter = m => message.author.id === m.author.id;
 
           message.channel.awaitMessages(filter, { time: 60000, max: 1, errors: ['time'] })
