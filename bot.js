@@ -202,7 +202,15 @@ if(command === "help") {
                 inline: false,
             },{
               name: 'Warn: k!warn [@user] [reason]',
-              value: 'Warns specified user. Both User should have Administrator or Moderator roles to do so',
+              value: 'Warns specified user. Both Bot and User should have Administrator or Moderator roles to do so',
+          },
+          {
+              name: '\u200b',
+              value: '\u200b',
+              inline: false,
+          },{
+              name: 'Warn: k!(un)mute [@user]',
+              value: '(Un)Mutes specified user. User should have Administrator or Moderator roles to do so',
           },
           {
               name: '\u200b',
@@ -441,11 +449,6 @@ if(command === "purge") {
   }
 
 
-  if(command === "whoopsie"){
-    let userID = args[0]
-    guild.members.unban(userID)
-    message.channel.send(`Unbanned ${user.username} from ${guild.name}`)
-}
 
 
 
@@ -598,6 +601,29 @@ if(command === "warn"){
 };
 
 
+if (command === "mute") {
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
+      return message.reply("Sorry, you don't have permissions to use this!");
+  const role = <guild>.roles.cache.find(role => role.name === 'Muted');
+  let member = message.mentions.members
+  if(!member) return message.channel.send("Please specify member to be warned.")
+  member.addRole(role);
+  
+  message.channel.send(`Muted ${member}.`);
+  message.delete().catch(O_o=>{}); 
+}
+
+if (command === "unmute") {
+  if(!message.member.roles.some(r=>["Trump Administration", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
+      return message.reply("Sorry, you don't have permissions to use this!");
+  const role = <guild>.roles.cache.find(role => role.name === 'Muted');
+  let member = message.mentions.members
+  if(!member) return message.channel.send("Please specify member to be warned.")
+  member.removeRole(role);
+  
+  message.channel.send(`Unmuted ${member}.`);
+  message.delete().catch(O_o=>{}); 
+}
 
 
 
@@ -947,9 +973,13 @@ if(command === "guessnum") {
         if(count === 4){
           message.channel.send({ embed: loseMessageEmbed });
         }
-        var guessedNum = parseInt(message.content, 10)
+        <message>.channel.send('Please enter more input.').then(() => {
+          const filter = m => <message>.author.id === m.author.id;
 
-        if(guessedNum === numThinkingOf) {
+          <message>.channel.awaitMessages(filter, { time: 60000, max: 1, errors: ['time'] })
+            .then(messages => {
+              let guessedNum = messages.first().content;
+              if(guessedNum === numThinkingOf) {
           message.channel.send({ embed: correctMessageEmbed });
           count = 3
         }else if(guessedNum > numThinkingOf){
@@ -959,6 +989,14 @@ if(command === "guessnum") {
         }else{
           message.channel.send("!!!WRONG ANSWER!!!")
   }
+            })
+            .catch(() => {
+              <message>.channel.send('You did not enter any input!');
+            });
+          });
+
+
+        
         count++
     }
   }
