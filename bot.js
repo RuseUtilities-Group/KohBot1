@@ -779,7 +779,9 @@ if (command === "massremoverole") {
 
 
 
-
+if(command === "notclickbait"){
+  message.channel.send("COOL VIDEO OMG OMG | PRANK LMFAO LOLOLOL | TRENDING | UPDATED 2020 | GONE SEXUAL | POLICE CAME | MUST WATCH | NOT CLICKBAIT")
+}
 
 
 if(command === "pledgetopakistan"){
