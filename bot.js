@@ -786,7 +786,13 @@ if (command === "massremoverole") {
 
 
 
-
+if(command === "celebration"){
+  message.channel.send("AYYYY WOOHHOOOOIOOO CELEBRATION OMG COOL")
+  message.channel.send("🎊🎊🎊🎊🎊🎊🎊🎊🎊🎊🎊🎊")
+  message.channel.send("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+  message.channel.send("🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
+  message.channel.send("AYYYY WOOHHOOOOIOOO CELEBRATION OMG COOL")
+}
 
 
 
