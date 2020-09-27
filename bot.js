@@ -782,8 +782,15 @@ if (command === "massremoverole") {
 
 
 
-
-
+if(command === "pledgetopakistan"){
+  pledge = args.join(" ");
+  if(!pledge){
+    message.channel.send("WOW THIS IS A STROOONG MESSAGE!");
+    message.channel.send("NO ONE WILL HAVE THE COURAGE TO UNDERMINE THE SOVERGINITY OF OUR COUNTREE");
+  } else{
+    message.channel.send(`INSHALLAH! THIS MAN WILL ${pledge}`);
+  }
+}
 
 
 if(command === "celebration"){
