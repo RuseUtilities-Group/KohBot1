@@ -73,8 +73,6 @@ client.on('message', (receivedMessage) => {
     receivedMessage.channel.send("No");
     if(receivedMessage.channel.id === "747406501819318276"){
        receivedMessage.delete().catch(O_o=>{});
-       const fetched = await receivedMessage.channel.fetchMessages({limit: 1});
-       receivedMessage.channel.bulkDelete(fetched)
       }
   };
 });
