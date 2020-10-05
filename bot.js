@@ -71,7 +71,11 @@ client.on('message', (receivedMessage) => {
 client.on('message', (receivedMessage) => {
   if (receivedMessage.content.toLowerCase.startsWith("+supreme")) {
     receivedMessage.channel.send("No");
-    if(message.channel.id === "747406501819318276") message.delete().catch(O_o=>{}); 
+    if(message.channel.id === "747406501819318276"){
+       message.delete().catch(O_o=>{});
+       const fetched = await message.channel.fetchMessages({limit: 1});
+       message.channel.bulkDelete(fetched)
+      }
   };
 });
 
