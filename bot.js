@@ -1044,6 +1044,21 @@ if(command === "guessnum") {
   var intervalFunct = setInterval(messageHandle, 5000 );
 }
 
+//chatbot commands
+if(command === "activate") {
+  message.channel.send("```AI ChatBot Activated```");
+}
+
+if(command === "deactivate") {
+  message.channel.send("```AI ChatBot Deactivated```");
+}
+
+if(command === "aipost") {
+  const sayMessage = args.join(" ");
+   var announcementChannel = client.channels.find(channel => channel.id === '699967983136800890')
+    announcementChannel.send(sayMessage);
+  
+}  
 
 }); 
 
@@ -1122,7 +1137,7 @@ client.on("message", message => {
     var googlePrefix = "https://www.google.com/search?-b-d&q="
     const args = message.content.slice(7).trim().split(/ +/g);
     const gameAmounts = args.join("+");
-    var search = googlePrefix + gameAmounts
+    var search = googlePrefix + gameAmounts;
     message.reply("Heres the google link:" + search)
   };
 
@@ -1138,4 +1153,3 @@ client.on("message", message => {
 //    message.channel.reply("A" + result + "was rolled!")
 //  }
 });
-
