@@ -1057,7 +1057,8 @@ if(command === "deactivate") {
 
 if(command === "aipost") {
   const sayMessage = args.join(" ");
-  client.channels.cache.get('699967983136800890').send(sayMessage);
+  var announcementChannel = client.channels.find(channel => channel.id === '699967983136800890');
+  announcementChannel.send(sayMessage);
   message.channel.send("Message Sent");
 }  
 
