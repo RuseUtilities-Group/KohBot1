@@ -766,7 +766,8 @@ if (command === "kill"){
 
   const user = message.mentions.members.first();
   const messageAuthor = message.author
-  var killMessage = greetingresponse[rng(greetingresponse.length())]
+  const rn = rng(18)
+  var killMessage = greetingresponse[rn]
   message.channel.send(`${messageAuthor} ${killMessage} ${user} to death`)
   message.delete().catch(O_o=>{}); 
 }
