@@ -741,7 +741,11 @@ if (command === "massremoverole") {
 
 
 
-
+if (command === "kill"){
+  const user = message.mentions.members.first();
+  message.channel.send(`${user} is now dead.`)
+  
+}
 
 
 
