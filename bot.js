@@ -1047,16 +1047,19 @@ if(command === "guessnum") {
 //chatbot commands
 if(command === "activate") {
   message.channel.send("```AI ChatBot Activated```");
+  message.delete().catch(O_o=>{}); 
 }
 
 if(command === "deactivate") {
   message.channel.send("```AI ChatBot Deactivated```");
+  message.delete().catch(O_o=>{}); 
 }
 
 if(command === "aipost") {
   const sayMessage = args.join(" ");
-   var announcementChannel = client.channels.find(channel => channel.id === '699967983136800890')
-    announcementChannel.send(sayMessage);
+  var announcementChannel = client.channels.find(channel => channel.id === '699967983136800890')
+  announcementChannel.send(sayMessage);
+  message.channel.send("Message Sent")
   
 }  
 
