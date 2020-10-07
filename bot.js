@@ -4,8 +4,9 @@ const config = require("./config.json")
 const token = process.env.token;
 var fs = require("fs");
 
-
-
+function rng(num){
+  return Math.floor (Math.random() * (num - 1 + 1)) + 1;
+}
 
 
 //Error Handler
@@ -742,8 +743,32 @@ if (command === "massremoverole") {
 
 
 if (command === "kill"){
+  const greetingresponse = [
+    'fried',
+    'roasted',
+    'machined gunned',
+    'slained',
+    "earraped",
+    "raped",
+    "burned",
+    "boiled",
+    "braised",
+    "fenced",
+    "poked",
+    "slapped",
+    "shouted at",
+    "kissed",
+    "thew keyboards at",
+    "whacked",
+    "headshot",
+    "bullied",
+  ]
+
   const user = message.mentions.members.first();
-  message.channel.send(`${user} is now dead.`)
+  const messageAuthor = message.author
+  var killMessage = greetingresponse[rng(greetingresponse.length())]
+  message.channel.send(`${messageAuthor} ${killMessage} ${user} to death`)
+  message.delete().catch(O_o=>{}); 
 }
 
 
@@ -1060,11 +1085,6 @@ client.on("message", message => {
   };
 });
 
-
-
-function rng(num){
-  return Math.floor (Math.random() * (num - 1 + 1)) + 1;
-}
 
 //Dictionaries
 const greetings = [
