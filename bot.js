@@ -428,7 +428,7 @@ if(command === "purge") {
 
 
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Canva Megachad"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
