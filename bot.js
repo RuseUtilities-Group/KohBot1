@@ -399,6 +399,8 @@ if(command === "purge") {
     if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Canva Megachad"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(member.id = "487168307506708490")
+      return message.reply("How dare you try to kick Almightly Koh")
     if(!member)
       return message.reply("Please mention a valid member of this server");
     if(!member.kickable) 
@@ -432,6 +434,8 @@ if(command === "purge") {
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
+    if(member.id = "487168307506708490")
+      return message.reply("How dare you try to kick Almightly Koh")
     if(!member)
       return message.reply("Please mention a valid member of this server");
     if(!member.bannable) 
