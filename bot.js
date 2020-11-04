@@ -108,11 +108,6 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-  if(message.content.toLowerCase().includes('trump')) { message.channel.send("VICTORY MY ASS, TRUMOP")}
-}); 
-
-
 
 
 client.on("message", async message => {
@@ -1123,6 +1118,16 @@ const greetingresponse = [
   "Hows your day been?",
   "Whats brewing?"
 ]
+
+const trumopResponses = [
+  'VICTORY MY ASS, TRUMOP',
+  'SUE US SUE UR MOM',
+  'TRUMP GAY, BIDEN WILL WIN',
+  'REPUBLICAN MORE LIKE RETARD',
+  'haha TRUMOP SCARED OF MAIL IN VOTES',
+  'MAIL IN VOTES ARE NOT RIGGED',
+  'BEAU BIDEN IS A SEXY MAN WDYM'
+]
 client.on("message", message => {
   if(message.author.bot) return;
   //if(message.channel.id !== "688568369636442116"){
@@ -1158,3 +1163,8 @@ client.on("message", message => {
 //    message.channel.reply("A" + result + "was rolled!")
 //  }
 });
+
+client.on('message', message => {
+  const num = rng(7);
+  if(message.content.toLowerCase().includes('trump')) { message.channel.send(trumopResponses[num])};
+}); 
