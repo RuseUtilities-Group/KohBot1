@@ -28,7 +28,7 @@ client.login(token);
 //Terminal User Interface
 client.on("ready", () => {
   console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  client.user.setActivity(`Playing k!help`);
+  client.user.setActivity(`Biden WILL Win the Election`);
 
 });
 
