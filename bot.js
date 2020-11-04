@@ -1165,6 +1165,6 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
-  const num = rng(7);
+  var num = rng(7);
   if(message.content.toLowerCase().includes('trump')) { message.channel.send(trumopResponses[num])};
 }); 
