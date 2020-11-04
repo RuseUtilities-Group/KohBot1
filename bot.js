@@ -109,8 +109,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-  if(message.author.bot) return;
-  if(message.content.toLowerCase().includes('trump')) { message.channel.send("SHUT UP COUNT THE MAIL IN BALLOTS")}
+  if(message.content.toLowerCase().includes('trump')) { message.channel.send("VICTORY MY ASS, TRUMOP")}
 }); 
 
 
