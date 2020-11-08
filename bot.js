@@ -819,6 +819,7 @@ if(command === "pledgetopakistan"){
 
 
 if(command === "celebration"){
+  if(message.guild.id() == '747406501819318272') return
   message.channel.send("AYYYY WOOHHOOOOIOOO CELEBRATION OMG COOL")
   message.channel.send("🎊🎊🎊🎊🎊🎊🎊🎊🎊🎊🎊🎊")
   message.channel.send("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
