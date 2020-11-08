@@ -28,7 +28,7 @@ client.login(token);
 //Terminal User Interface
 client.on("ready", () => {
   console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  client.user.setActivity(`Biden WILL Win the Election`);
+  client.user.setActivity(`Biden has WON the Election`);
 
 });
 
@@ -1120,13 +1120,14 @@ const greetingresponse = [
 ]
 
 const trumopResponses = [
-  'VICTORY MY ASS, TRUMOP',
-  'SUE US SUE UR MOM',
-  'TRUMP GAY, BIDEN WILL WIN',
-  'REPUBLICAN MORE LIKE RETARD',
-  'haha TRUMOP SCARED OF MAIL IN VOTES',
-  'MAIL IN VOTES ARE NOT RIGGED',
-  'BEAU BIDEN IS A SEXY MAN WDYM'
+  'Who was won now?',
+  'Long Live President Biden',
+  "Don't Blame the Media, blame your shitty actions when you were president.",
+  'Imagine losing even when you had a better campaign',
+  'Sore Loser, cant even admit defeat',
+  'Trump has lost',
+  'Biden 2020',
+  'Cry More'
 ]
 client.on("message", message => {
   if(message.author.bot) return;
