@@ -363,7 +363,7 @@ if(command === "ping") {
 
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Purple"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
     if(!deleteCount || deleteCount < 2 || deleteCount > 10000)
@@ -390,7 +390,7 @@ if(command === "purge") {
 
 
    if(command === "kick") {
-    if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Canva Megachad"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Canva Megachad", "Purple"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(member.id = "487168307506708490")
@@ -424,7 +424,7 @@ if(command === "purge") {
 
 
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Canva Megachad"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Canva Megachad", "Purple"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -560,7 +560,7 @@ if(command === "roll") {
 
 
 if(command === "warn"){
-  if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Harry Liang"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator", "Harry Liang", "Purple"].includes(r.name)))
       return message.reply("Sorry, you don't have permissions to use this!");
 
   let moderator = message.member.user
