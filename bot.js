@@ -697,8 +697,8 @@ if(command === "userstats") {
 
 
 if (command === "massignrole") {
-  if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
-      return message.reply("Sorry, you don't have permissions to use this!");
+ //if(!message.member.roles.some(r=>["Booster", "Admin", "Owner", "Senior Admin/ Vice Owner", "Admin 1", "Admin 2", "Admin 3", "Trial Admin", "Minor Mod", "Mod", "Moderator"].includes(r.name)))
+   //   return message.reply("Sorry, you don't have permissions to use this!");
   const Role = message.mentions.roles.first();
   if(!Role){
     return message.reply("Please Specify the Right Role and User in the Right Format");
