@@ -32,7 +32,7 @@ client.on("ready", () => {
 });
 
 client.on("message", async message => {
-    const prefix = "_";
+    const prefix = "k!";
 
     if (message.author.bot) return;
     if (!message.guild) return;
