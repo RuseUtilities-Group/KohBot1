@@ -1,54 +1,46 @@
-const { Client, Collection } = require("discord.js");
-const { config } = require("dotenv");
+const Discord = require("discord.js")
+const config = require("./config.json")
+const bot = new Discord.Client();
 const fs = require("fs");
+bot.commands = new Discord.Collection();
 
-const client = new Client({
-    disableEveryone: true
+fs.readdir("./commands/", (err, files) => {
+
+  if(err) console.log(err);
+
+  let jsfile = files.filter(f => f.split(".").pop() === "js");
+  if(jsfile.length <= 0){
+    console.log("Couldn't find commands.");
+    return;
+  }
+
+jsfile.forEach((f, i) =>{
+  let props = require(`./commands/${f}`);
+  console.log(`${f} loaded!`);
+  bot.commands.set(props.help.name, props);
 });
 
-client.commands = new Collection();
-client.aliases = new Collection();
-
-client.categories = fs.readdirSync("./commands/");
-
-config({
-    path: __dirname + "/.env"
 });
 
-["command"].forEach(handler => {
-    require(`./handlers/${handler}`)(client);
+
+bot.on("ready", () => {
+  console.log(bot.user.username + " is online.")
 });
 
-client.on("ready", () => {
-    console.log(`Hi, ${client.user.username} is now online!`);
+bot.on("message", async message => {
+  //a little bit of data parsing/general checks
+  if(message.author.bot) return;
+  if(message.channel.type === 'dm') return;
+  let content = message.content.split(" ");
+  let command = content[0];
+  let args = content.slice(1);
+  let prefix = config.prefix;
 
-    client.user.setPresence({
-        status: "online",
-        game: {
-            name: "Getting Developed",
-            type: "STREAMING"
-        }
-    }); 
-});
 
-client.on("message", async message => {
-    const prefix = "k!";
+  //checks if message contains a command and runs it
+  let commandfile = bot.commands.get(command.slice(prefix.length));
+  if(commandfile) commandfile.run(bot,message,args);
+})
 
-    if (message.author.bot) return;
-    if (!message.guild) return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.member) message.member = await message.guild.fetchMember(message);
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
-    
-    if (cmd.length === 0) return;
-    
-    let command = client.commands.get(cmd);
-    if (!command) command = client.commands.get(client.aliases.get(cmd));
-
-    if (command) 
-        command.run(client, message, args);
-});
-
-client.login(process.env.TOKEN);
+bot.login(process.env.token);
