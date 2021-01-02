@@ -51,6 +51,7 @@ client.on("message", async message => {
   //checks if message contains a command and runs it
   let commandfile = client.commands.get(command.slice(prefix.length));
   if(commandfile) commandfile.run(client,message,args);
+  if(!commandfile) message.channel.reply("That command does not exist!")
 })
 
 
