@@ -1,8 +1,8 @@
 const Discord = require("discord.js")
 const config = require("./config.json")
-const bot = new Discord.Client();
+const client = new Discord.Client();
 const fs = require("fs");
-bot.commands = new Discord.Collection();
+client.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -17,19 +17,30 @@ fs.readdir("./commands/", (err, files) => {
 jsfile.forEach((f, i) =>{
   let props = require(`./commands/${f}`);
   console.log(`${f} loaded!`);
-  bot.commands.set(props.help.name, props);
+  client.commands.set(props.help.name, props);
 });
 
 });
 
 
-bot.on("ready", () => {
-  console.log(bot.user.username + " is online.")
-});
+client.on("ready", () => {
+    console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+    client.user.setActivity("I was testing");
+  
+  });
+  
+  client.on('ready', () => {
+      // List servers the bot is connected to
+      console.log("Servers:")
+      client.guilds.forEach((guild) => {
+          console.log(" - " + guild.name)
+      })
+  })
+   
 
-bot.on("message", async message => {
+client.on("message", async message => {
   //a little bit of data parsing/general checks
-  if(message.author.bot) return;
+  if(message.author.client) return;
   if(message.channel.type === 'dm') return;
   let content = message.content.split(" ");
   let command = content[0];
@@ -38,9 +49,9 @@ bot.on("message", async message => {
 
 
   //checks if message contains a command and runs it
-  let commandfile = bot.commands.get(command.slice(prefix.length));
-  if(commandfile) commandfile.run(bot,message,args);
+  let commandfile = client.commands.get(command.slice(prefix.length));
+  if(commandfile) commandfile.run(client,message,args);
 })
 
 
-bot.login(process.env.token);
+client.login(process.env.token);
