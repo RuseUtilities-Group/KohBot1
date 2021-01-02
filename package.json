@@ -21,6 +21,6 @@
     "author": "Joshua Koh",
     "license": "Apache 2.0",
     "dependencies": {
-      "discord.js": "^11.3.0"
+      "discord.js": "^10.16.1"
     }
   }
